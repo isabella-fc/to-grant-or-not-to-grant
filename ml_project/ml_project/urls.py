@@ -21,5 +21,6 @@ from wcb.views import predict_model
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+
     path('', predict_model, name='predict_model'),
 ]
