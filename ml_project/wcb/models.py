@@ -19,3 +19,10 @@ class Predictions(models.Model):
     petal_length = models.DecimalField(decimal_places=2, max_digits=3)
     petal_width = models.DecimalField(decimal_places=2, max_digits=3)
     prediction = models.CharField(choices=PREDICT_OPTIONS, max_length=10)
+
+class ModelMetrics(models.Model):
+    accuracy = models.FloatField()
+    precision = models.FloatField()
+    recall = models.FloatField()
+    f1_score = models.FloatField()
+    created_at = models.DateTimeField(auto_now_add=True)

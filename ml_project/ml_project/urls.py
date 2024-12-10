@@ -17,10 +17,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from wcb.views import predict_model
+import wcb.views as views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
 
-    path('', predict_model, name='predict_model'),
+    path('', views.home, name='home'),
+    path('model_prediction/', views.model_prediction, name='model_prediction'),
+    path('feature_importance/', views.feature_importance, name='feature_importance'),
+    path('data_summary/', views.data_summary, name='data_summary'),
 ]

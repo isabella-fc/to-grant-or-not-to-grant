@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<h1>Data Summary</h1>
+<ul>
+    <li>Total Claims: {{ summary.total_claims }}</li>
+    <li>COVID-19 Related Claims: {{ summary.covid_related }}</li>
+    <li>Average Age: {{ summary.avg_age }}</li>
+</ul>
+
+{% endblock %}
