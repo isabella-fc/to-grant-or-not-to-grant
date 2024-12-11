@@ -18,8 +18,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import wcb.views as views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
+
     path("admin/", admin.site.urls),
 
     path('', views.home, name='home'),
@@ -27,3 +30,5 @@ urlpatterns = [
     path('feature_importance/', views.feature_importance, name='feature_importance'),
     path('data_summary/', views.data_summary, name='data_summary'),
 ]
+
+urlpatterns += static(settings.STATIC_ROOT, document_root=settings.STATIC_ROOT)
