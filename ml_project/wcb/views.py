@@ -15,68 +15,88 @@ import pickle
 MODEL_PATH = os.path.join(settings.BASE_DIR, 'ml_project', 'ml_model', 'wcb_model.pkl')
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'index.html')
+
+
 def model_prediction(request):
     shap_plot_path = os.path.join(settings.MEDIA_ROOT, 'shap_plot.png')
-    feature_importance_path = os.path.join(settings.STATIC_ROOT, 'feature_importance.png')
+    feature_importance_path = os.path.join(settings.BASE_DIR, 'static', 'feature_importance.png')
 
     if request.method == 'POST':
         form = ModelForm(request.POST)
         if form.is_valid():
-            sepal_length = form.cleaned_data['sepal_length']
-            sepal_width = form.cleaned_data['sepal_width']
-            petal_length = form.cleaned_data['petal_length']
-            petal_width = form.cleaned_data['petal_width']
+            # Extract cleaned data
+            cleaned_data = form.cleaned_data
 
-            # Convert the input to a NumPy array
-            model_features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
+            # Prepare features in the correct order
+            model_features = np.array([[
+                cleaned_data['age_at_injury'],
+                cleaned_data['average_weekly_wage'],
+                cleaned_data['ime4_count'],
+                cleaned_data['number_of_dependents'],
+                1 if cleaned_data['attorney_representative'] == 'True' else 0,
+                1 if cleaned_data['covid_indicator'] == 'True' else 0,
+                1 if cleaned_data['carrier_type'] == '1A. PRIVATE' else
+                2 if cleaned_data['carrier_type'] == '2A. SIF' else 3,  # Carrier Type encoding
+                1 if cleaned_data['district_name'] == 'NYC' else 0,  # District encoding
+                1 if cleaned_data['gender'] == 'M' else 0,  # Gender encoding
+                1 if cleaned_data['medical_fee_region'] == 'IV' else 0,  # Medical Fee Region encoding
+                cleaned_data['birth_year'],
+                cleaned_data['carrier_name'],  # String input; ensure model supports string handling or encode it
+                cleaned_data['county_of_injury'],
+                cleaned_data['industry_code'],
+                cleaned_data['wcio_cause_of_injury_code'],
+                cleaned_data['wcio_nature_of_injury_code'],
+                cleaned_data['wcio_part_of_body_code'],
+                cleaned_data['zip_code'],
+            ]])
 
+            # Load model
             if not os.path.exists(MODEL_PATH):
                 raise FileNotFoundError(f"Model file not found at: {MODEL_PATH}")
 
             with open(MODEL_PATH, 'rb') as model_file:
                 loaded_model = pickle.load(model_file)
 
-            # Make Prediction
+            # Make prediction
             prediction = loaded_model.predict(model_features)[0]
-            prediction_name_list = ['setosa', 'versicolor', 'virginica']
-            prediction_name = prediction_name_list[prediction]
+            prediction_name = f"Class {prediction}"  # Customize based on your model's output classes
 
-            Predictions.objects.create(
-                sepal_length=sepal_length,
-                sepal_width=sepal_width,
-                petal_length=petal_length,
-                petal_width=petal_width,
-                prediction=prediction_name
-            )
-
-            ## Generate SHAP Explanation
-            #explainer = shap.Explainer(loaded_model,
-            #                           feature_names=['sepal_length', 'sepal_width', 'petal_length', 'petal_width'])
-            #shap_values = explainer(model_features)
-            #
-            ## Select SHAP values for the predicted class
-            #if isinstance(shap_values, list):  # For multi-class classification
-            #    shap_values_for_class = shap_values[prediction]
-            #else:  # For single-output models
-            #    shap_values_for_class = shap_values
-            #
-            ## Waterfall Plot
-            #shap.plots.waterfall(shap_values[0, 0])
-            #plt.savefig(shap_plot_path)
-
-            # Generate Feature Importance
+            # Generate feature importance plot
             importance = loaded_model.feature_importances_
-            features = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
-            plt.figure()
-            plt.bar(features, importance)
-            plt.title('Feature Importance')
+            features = [
+                'Age at Injury',
+                'Average Weekly Wage',
+                'IME-4 Count',
+                'Number of Dependents',
+                'Attorney Representative',
+                'COVID Indicator',
+                'Carrier Type',
+                'District Name',
+                'Gender',
+                'Medical Fee Region',
+                'Birth Year',
+                'Carrier Name',
+                'County of Injury',
+                'Industry Code',
+                'WCIO Cause of Injury Code',
+                'WCIO Nature of Injury Code',
+                'WCIO Part of Body Code',
+                'Zip Code'
+            ]
+
+            plt.figure(figsize=(10, 6))
+            plt.barh(features, importance)
+            plt.xlabel('Feature Importance')
+            plt.ylabel('Features')
+            plt.title('Feature Importance Plot')
+            plt.tight_layout()  # Prevent label overlap
             plt.savefig(feature_importance_path)
+            plt.close()
 
             return render(request, 'model_prediction.html', {
                 'form': form,
                 'prediction': prediction_name,
-                'shap_plot': shap_plot_path,
                 'feature_importance_plot': feature_importance_path,
             })
 
@@ -84,6 +104,8 @@ def model_prediction(request):
         form = ModelForm()
 
     return render(request, 'model_prediction.html', {'form': form})
+
+
 
 def feature_importance(request):
     with open(MODEL_PATH, 'rb') as model_file:
@@ -94,7 +116,7 @@ def feature_importance(request):
 
     plt.bar(features, importance)
     plt.title('Feature Importance')
-    plt.savefig(os.path.join(settings.BASE_DIR, 'staticfiles', 'feature_importance.png'))
+    plt.savefig(os.path.join(settings.BASE_DIR, 'static', 'feature_importance.png'))
     return render(request, 'feature_importance.html', {'plot': 'feature_importance.png'})
 
 
