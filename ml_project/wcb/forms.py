@@ -30,7 +30,8 @@ class ModelForm(forms.Form):
         choices=[
             ('1A. PRIVATE', '1A. PRIVATE'),
             ('2A. SIF', '2A. SIF'),
-            ('3A. SELF PUBLIC', '3A. SELF PUBLIC')
+            ('3A. SELF PUBLIC', '3A. SELF PUBLIC'),
+            ('Other', 'Other')
         ]
     )
 
@@ -38,7 +39,6 @@ class ModelForm(forms.Form):
         label='Gender',
         choices=[('F', 'Female'), ('M', 'Male')]
     )
-
 
     # Text input fields
     district_name = forms.CharField(label='District Name', max_length=50)
