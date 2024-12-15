@@ -1,0 +1,830 @@
+Folder PATH listing
+Volume serial number is B66E-0F60
+C:.
+¦   .env
+¦   db.sqlite3
+¦   manage.py
+¦   requirements.txt
+¦   tree.txt
+¦   
++---.idea
+¦   ¦   .gitignore
+¦   ¦   dataSources.local.xml
+¦   ¦   dataSources.xml
+¦   ¦   misc.xml
+¦   ¦   ml_project.iml
+¦   ¦   modules.xml
+¦   ¦   vcs.xml
+¦   ¦   workspace.xml
+¦   ¦   
+¦   +---dataSources
+¦   ¦   ¦   6993573b-800a-4e0e-aab7-6375ad889fd7.xml
+¦   ¦   ¦   
+¦   ¦   +---6993573b-800a-4e0e-aab7-6375ad889fd7
+¦   ¦       +---storage_v2
+¦   ¦           +---_src_
+¦   ¦               +---schema
+¦   ¦                       main.uQUzAA.meta
+¦   ¦                       
+¦   +---inspectionProfiles
+¦           profiles_settings.xml
+¦           
++---data
+¦       train_data.csv
+¦       
++---media
+¦       feature_importance.png
+¦       
++---ml_project
+¦   ¦   asgi.py
+¦   ¦   settings.py
+¦   ¦   urls.py
+¦   ¦   wsgi.py
+¦   ¦   __init__.py
+¦   ¦   
+¦   +---ml_model
+¦   ¦       wcb_model.pkl
+¦   ¦       wcb_model.py
+¦   ¦       
+¦   +---__pycache__
+¦           settings.cpython-312.pyc
+¦           urls.cpython-312.pyc
+¦           wsgi.cpython-312.pyc
+¦           __init__.cpython-312.pyc
+¦           
++---static
+¦   +---css
+¦   ¦       model_prediction.css
+¦   ¦       
+¦   +---feature_importance
+¦   +---fonts
+¦   ¦   ¦   Inter-Italic-VariableFont_opsz,wght.ttf
+¦   ¦   ¦   Inter-VariableFont_opsz,wght.ttf
+¦   ¦   ¦   
+¦   ¦   +---static
+¦   ¦           Inter_18pt-Black.ttf
+¦   ¦           Inter_18pt-BlackItalic.ttf
+¦   ¦           Inter_18pt-Bold.ttf
+¦   ¦           Inter_18pt-BoldItalic.ttf
+¦   ¦           Inter_18pt-ExtraBold.ttf
+¦   ¦           Inter_18pt-ExtraBoldItalic.ttf
+¦   ¦           Inter_18pt-ExtraLight.ttf
+¦   ¦           Inter_18pt-ExtraLightItalic.ttf
+¦   ¦           Inter_18pt-Italic.ttf
+¦   ¦           Inter_18pt-Light.ttf
+¦   ¦           Inter_18pt-LightItalic.ttf
+¦   ¦           Inter_18pt-Medium.ttf
+¦   ¦           Inter_18pt-MediumItalic.ttf
+¦   ¦           Inter_18pt-Regular.ttf
+¦   ¦           Inter_18pt-SemiBold.ttf
+¦   ¦           Inter_18pt-SemiBoldItalic.ttf
+¦   ¦           Inter_18pt-Thin.ttf
+¦   ¦           Inter_18pt-ThinItalic.ttf
+¦   ¦           Inter_24pt-Black.ttf
+¦   ¦           Inter_24pt-BlackItalic.ttf
+¦   ¦           Inter_24pt-Bold.ttf
+¦   ¦           Inter_24pt-BoldItalic.ttf
+¦   ¦           Inter_24pt-ExtraBold.ttf
+¦   ¦           Inter_24pt-ExtraBoldItalic.ttf
+¦   ¦           Inter_24pt-ExtraLight.ttf
+¦   ¦           Inter_24pt-ExtraLightItalic.ttf
+¦   ¦           Inter_24pt-Italic.ttf
+¦   ¦           Inter_24pt-Light.ttf
+¦   ¦           Inter_24pt-LightItalic.ttf
+¦   ¦           Inter_24pt-Medium.ttf
+¦   ¦           Inter_24pt-MediumItalic.ttf
+¦   ¦           Inter_24pt-Regular.ttf
+¦   ¦           Inter_24pt-SemiBold.ttf
+¦   ¦           Inter_24pt-SemiBoldItalic.ttf
+¦   ¦           Inter_24pt-Thin.ttf
+¦   ¦           Inter_24pt-ThinItalic.ttf
+¦   ¦           Inter_28pt-Black.ttf
+¦   ¦           Inter_28pt-BlackItalic.ttf
+¦   ¦           Inter_28pt-Bold.ttf
+¦   ¦           Inter_28pt-BoldItalic.ttf
+¦   ¦           Inter_28pt-ExtraBold.ttf
+¦   ¦           Inter_28pt-ExtraBoldItalic.ttf
+¦   ¦           Inter_28pt-ExtraLight.ttf
+¦   ¦           Inter_28pt-ExtraLightItalic.ttf
+¦   ¦           Inter_28pt-Italic.ttf
+¦   ¦           Inter_28pt-Light.ttf
+¦   ¦           Inter_28pt-LightItalic.ttf
+¦   ¦           Inter_28pt-Medium.ttf
+¦   ¦           Inter_28pt-MediumItalic.ttf
+¦   ¦           Inter_28pt-Regular.ttf
+¦   ¦           Inter_28pt-SemiBold.ttf
+¦   ¦           Inter_28pt-SemiBoldItalic.ttf
+¦   ¦           Inter_28pt-Thin.ttf
+¦   ¦           Inter_28pt-ThinItalic.ttf
+¦   ¦           
+¦   +---images
+¦           b38a3c77-edca-ec11-a7b5-000d3aa8f2d0.png
+¦           img.png
+¦           novaims.png
+¦           
++---staticfiles
+¦   ¦   feature_importance.png
+¦   ¦   
+¦   +---admin
+¦   ¦   +---css
+¦   ¦   ¦   ¦   autocomplete.css
+¦   ¦   ¦   ¦   base.css
+¦   ¦   ¦   ¦   changelists.css
+¦   ¦   ¦   ¦   dark_mode.css
+¦   ¦   ¦   ¦   dashboard.css
+¦   ¦   ¦   ¦   forms.css
+¦   ¦   ¦   ¦   login.css
+¦   ¦   ¦   ¦   nav_sidebar.css
+¦   ¦   ¦   ¦   responsive.css
+¦   ¦   ¦   ¦   responsive_rtl.css
+¦   ¦   ¦   ¦   rtl.css
+¦   ¦   ¦   ¦   unusable_password_field.css
+¦   ¦   ¦   ¦   widgets.css
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---vendor
+¦   ¦   ¦       +---select2
+¦   ¦   ¦               LICENSE-SELECT2.md
+¦   ¦   ¦               select2.css
+¦   ¦   ¦               select2.min.css
+¦   ¦   ¦               
+¦   ¦   +---img
+¦   ¦   ¦   ¦   calendar-icons.svg
+¦   ¦   ¦   ¦   icon-addlink.svg
+¦   ¦   ¦   ¦   icon-alert.svg
+¦   ¦   ¦   ¦   icon-calendar.svg
+¦   ¦   ¦   ¦   icon-changelink.svg
+¦   ¦   ¦   ¦   icon-clock.svg
+¦   ¦   ¦   ¦   icon-deletelink.svg
+¦   ¦   ¦   ¦   icon-hidelink.svg
+¦   ¦   ¦   ¦   icon-no.svg
+¦   ¦   ¦   ¦   icon-unknown-alt.svg
+¦   ¦   ¦   ¦   icon-unknown.svg
+¦   ¦   ¦   ¦   icon-viewlink.svg
+¦   ¦   ¦   ¦   icon-yes.svg
+¦   ¦   ¦   ¦   inline-delete.svg
+¦   ¦   ¦   ¦   LICENSE
+¦   ¦   ¦   ¦   README.txt
+¦   ¦   ¦   ¦   search.svg
+¦   ¦   ¦   ¦   selector-icons.svg
+¦   ¦   ¦   ¦   sorting-icons.svg
+¦   ¦   ¦   ¦   tooltag-add.svg
+¦   ¦   ¦   ¦   tooltag-arrowright.svg
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---gis
+¦   ¦   ¦           move_vertex_off.svg
+¦   ¦   ¦           move_vertex_on.svg
+¦   ¦   ¦           
+¦   ¦   +---js
+¦   ¦       ¦   actions.js
+¦   ¦       ¦   autocomplete.js
+¦   ¦       ¦   calendar.js
+¦   ¦       ¦   cancel.js
+¦   ¦       ¦   change_form.js
+¦   ¦       ¦   core.js
+¦   ¦       ¦   filters.js
+¦   ¦       ¦   inlines.js
+¦   ¦       ¦   jquery.init.js
+¦   ¦       ¦   nav_sidebar.js
+¦   ¦       ¦   popup_response.js
+¦   ¦       ¦   prepopulate.js
+¦   ¦       ¦   prepopulate_init.js
+¦   ¦       ¦   SelectBox.js
+¦   ¦       ¦   SelectFilter2.js
+¦   ¦       ¦   theme.js
+¦   ¦       ¦   unusable_password_field.js
+¦   ¦       ¦   urlify.js
+¦   ¦       ¦   
+¦   ¦       +---admin
+¦   ¦       ¦       DateTimeShortcuts.js
+¦   ¦       ¦       RelatedObjectLookups.js
+¦   ¦       ¦       
+¦   ¦       +---vendor
+¦   ¦           +---jquery
+¦   ¦           ¦       jquery.js
+¦   ¦           ¦       jquery.min.js
+¦   ¦           ¦       LICENSE.txt
+¦   ¦           ¦       
+¦   ¦           +---select2
+¦   ¦           ¦   ¦   LICENSE.md
+¦   ¦           ¦   ¦   select2.full.js
+¦   ¦           ¦   ¦   select2.full.min.js
+¦   ¦           ¦   ¦   
+¦   ¦           ¦   +---i18n
+¦   ¦           ¦           af.js
+¦   ¦           ¦           ar.js
+¦   ¦           ¦           az.js
+¦   ¦           ¦           bg.js
+¦   ¦           ¦           bn.js
+¦   ¦           ¦           bs.js
+¦   ¦           ¦           ca.js
+¦   ¦           ¦           cs.js
+¦   ¦           ¦           da.js
+¦   ¦           ¦           de.js
+¦   ¦           ¦           dsb.js
+¦   ¦           ¦           el.js
+¦   ¦           ¦           en.js
+¦   ¦           ¦           es.js
+¦   ¦           ¦           et.js
+¦   ¦           ¦           eu.js
+¦   ¦           ¦           fa.js
+¦   ¦           ¦           fi.js
+¦   ¦           ¦           fr.js
+¦   ¦           ¦           gl.js
+¦   ¦           ¦           he.js
+¦   ¦           ¦           hi.js
+¦   ¦           ¦           hr.js
+¦   ¦           ¦           hsb.js
+¦   ¦           ¦           hu.js
+¦   ¦           ¦           hy.js
+¦   ¦           ¦           id.js
+¦   ¦           ¦           is.js
+¦   ¦           ¦           it.js
+¦   ¦           ¦           ja.js
+¦   ¦           ¦           ka.js
+¦   ¦           ¦           km.js
+¦   ¦           ¦           ko.js
+¦   ¦           ¦           lt.js
+¦   ¦           ¦           lv.js
+¦   ¦           ¦           mk.js
+¦   ¦           ¦           ms.js
+¦   ¦           ¦           nb.js
+¦   ¦           ¦           ne.js
+¦   ¦           ¦           nl.js
+¦   ¦           ¦           pl.js
+¦   ¦           ¦           ps.js
+¦   ¦           ¦           pt-BR.js
+¦   ¦           ¦           pt.js
+¦   ¦           ¦           ro.js
+¦   ¦           ¦           ru.js
+¦   ¦           ¦           sk.js
+¦   ¦           ¦           sl.js
+¦   ¦           ¦           sq.js
+¦   ¦           ¦           sr-Cyrl.js
+¦   ¦           ¦           sr.js
+¦   ¦           ¦           sv.js
+¦   ¦           ¦           th.js
+¦   ¦           ¦           tk.js
+¦   ¦           ¦           tr.js
+¦   ¦           ¦           uk.js
+¦   ¦           ¦           vi.js
+¦   ¦           ¦           zh-CN.js
+¦   ¦           ¦           zh-TW.js
+¦   ¦           ¦           
+¦   ¦           +---xregexp
+¦   ¦                   LICENSE.txt
+¦   ¦                   xregexp.js
+¦   ¦                   xregexp.min.js
+¦   ¦                   
+¦   +---css
+¦   ¦       model_prediction.css
+¦   ¦       
+¦   +---fonts
+¦   ¦   ¦   Inter-Italic-VariableFont_opsz,wght.ttf
+¦   ¦   ¦   Inter-VariableFont_opsz,wght.ttf
+¦   ¦   ¦   
+¦   ¦   +---static
+¦   ¦           Inter_18pt-Black.ttf
+¦   ¦           Inter_18pt-BlackItalic.ttf
+¦   ¦           Inter_18pt-Bold.ttf
+¦   ¦           Inter_18pt-BoldItalic.ttf
+¦   ¦           Inter_18pt-ExtraBold.ttf
+¦   ¦           Inter_18pt-ExtraBoldItalic.ttf
+¦   ¦           Inter_18pt-ExtraLight.ttf
+¦   ¦           Inter_18pt-ExtraLightItalic.ttf
+¦   ¦           Inter_18pt-Italic.ttf
+¦   ¦           Inter_18pt-Light.ttf
+¦   ¦           Inter_18pt-LightItalic.ttf
+¦   ¦           Inter_18pt-Medium.ttf
+¦   ¦           Inter_18pt-MediumItalic.ttf
+¦   ¦           Inter_18pt-Regular.ttf
+¦   ¦           Inter_18pt-SemiBold.ttf
+¦   ¦           Inter_18pt-SemiBoldItalic.ttf
+¦   ¦           Inter_18pt-Thin.ttf
+¦   ¦           Inter_18pt-ThinItalic.ttf
+¦   ¦           Inter_24pt-Black.ttf
+¦   ¦           Inter_24pt-BlackItalic.ttf
+¦   ¦           Inter_24pt-Bold.ttf
+¦   ¦           Inter_24pt-BoldItalic.ttf
+¦   ¦           Inter_24pt-ExtraBold.ttf
+¦   ¦           Inter_24pt-ExtraBoldItalic.ttf
+¦   ¦           Inter_24pt-ExtraLight.ttf
+¦   ¦           Inter_24pt-ExtraLightItalic.ttf
+¦   ¦           Inter_24pt-Italic.ttf
+¦   ¦           Inter_24pt-Light.ttf
+¦   ¦           Inter_24pt-LightItalic.ttf
+¦   ¦           Inter_24pt-Medium.ttf
+¦   ¦           Inter_24pt-MediumItalic.ttf
+¦   ¦           Inter_24pt-Regular.ttf
+¦   ¦           Inter_24pt-SemiBold.ttf
+¦   ¦           Inter_24pt-SemiBoldItalic.ttf
+¦   ¦           Inter_24pt-Thin.ttf
+¦   ¦           Inter_24pt-ThinItalic.ttf
+¦   ¦           Inter_28pt-Black.ttf
+¦   ¦           Inter_28pt-BlackItalic.ttf
+¦   ¦           Inter_28pt-Bold.ttf
+¦   ¦           Inter_28pt-BoldItalic.ttf
+¦   ¦           Inter_28pt-ExtraBold.ttf
+¦   ¦           Inter_28pt-ExtraBoldItalic.ttf
+¦   ¦           Inter_28pt-ExtraLight.ttf
+¦   ¦           Inter_28pt-ExtraLightItalic.ttf
+¦   ¦           Inter_28pt-Italic.ttf
+¦   ¦           Inter_28pt-Light.ttf
+¦   ¦           Inter_28pt-LightItalic.ttf
+¦   ¦           Inter_28pt-Medium.ttf
+¦   ¦           Inter_28pt-MediumItalic.ttf
+¦   ¦           Inter_28pt-Regular.ttf
+¦   ¦           Inter_28pt-SemiBold.ttf
+¦   ¦           Inter_28pt-SemiBoldItalic.ttf
+¦   ¦           Inter_28pt-Thin.ttf
+¦   ¦           Inter_28pt-ThinItalic.ttf
+¦   ¦           
+¦   +---images
+¦   ¦       b38a3c77-edca-ec11-a7b5-000d3aa8f2d0.png
+¦   ¦       img.png
+¦   ¦       novaims.png
+¦   ¦       
+¦   +---staticfiles
+¦       ¦   feature_importance.png
+¦       ¦   
+¦       +---admin
+¦       ¦   +---css
+¦       ¦   ¦   ¦   autocomplete.css
+¦       ¦   ¦   ¦   base.css
+¦       ¦   ¦   ¦   changelists.css
+¦       ¦   ¦   ¦   dark_mode.css
+¦       ¦   ¦   ¦   dashboard.css
+¦       ¦   ¦   ¦   forms.css
+¦       ¦   ¦   ¦   login.css
+¦       ¦   ¦   ¦   nav_sidebar.css
+¦       ¦   ¦   ¦   responsive.css
+¦       ¦   ¦   ¦   responsive_rtl.css
+¦       ¦   ¦   ¦   rtl.css
+¦       ¦   ¦   ¦   unusable_password_field.css
+¦       ¦   ¦   ¦   widgets.css
+¦       ¦   ¦   ¦   
+¦       ¦   ¦   +---vendor
+¦       ¦   ¦       +---select2
+¦       ¦   ¦               LICENSE-SELECT2.md
+¦       ¦   ¦               select2.css
+¦       ¦   ¦               select2.min.css
+¦       ¦   ¦               
+¦       ¦   +---img
+¦       ¦   ¦   ¦   calendar-icons.svg
+¦       ¦   ¦   ¦   icon-addlink.svg
+¦       ¦   ¦   ¦   icon-alert.svg
+¦       ¦   ¦   ¦   icon-calendar.svg
+¦       ¦   ¦   ¦   icon-changelink.svg
+¦       ¦   ¦   ¦   icon-clock.svg
+¦       ¦   ¦   ¦   icon-deletelink.svg
+¦       ¦   ¦   ¦   icon-hidelink.svg
+¦       ¦   ¦   ¦   icon-no.svg
+¦       ¦   ¦   ¦   icon-unknown-alt.svg
+¦       ¦   ¦   ¦   icon-unknown.svg
+¦       ¦   ¦   ¦   icon-viewlink.svg
+¦       ¦   ¦   ¦   icon-yes.svg
+¦       ¦   ¦   ¦   inline-delete.svg
+¦       ¦   ¦   ¦   LICENSE
+¦       ¦   ¦   ¦   README.txt
+¦       ¦   ¦   ¦   search.svg
+¦       ¦   ¦   ¦   selector-icons.svg
+¦       ¦   ¦   ¦   sorting-icons.svg
+¦       ¦   ¦   ¦   tooltag-add.svg
+¦       ¦   ¦   ¦   tooltag-arrowright.svg
+¦       ¦   ¦   ¦   
+¦       ¦   ¦   +---gis
+¦       ¦   ¦           move_vertex_off.svg
+¦       ¦   ¦           move_vertex_on.svg
+¦       ¦   ¦           
+¦       ¦   +---js
+¦       ¦       ¦   actions.js
+¦       ¦       ¦   autocomplete.js
+¦       ¦       ¦   calendar.js
+¦       ¦       ¦   cancel.js
+¦       ¦       ¦   change_form.js
+¦       ¦       ¦   core.js
+¦       ¦       ¦   filters.js
+¦       ¦       ¦   inlines.js
+¦       ¦       ¦   jquery.init.js
+¦       ¦       ¦   nav_sidebar.js
+¦       ¦       ¦   popup_response.js
+¦       ¦       ¦   prepopulate.js
+¦       ¦       ¦   prepopulate_init.js
+¦       ¦       ¦   SelectBox.js
+¦       ¦       ¦   SelectFilter2.js
+¦       ¦       ¦   theme.js
+¦       ¦       ¦   unusable_password_field.js
+¦       ¦       ¦   urlify.js
+¦       ¦       ¦   
+¦       ¦       +---admin
+¦       ¦       ¦       DateTimeShortcuts.js
+¦       ¦       ¦       RelatedObjectLookups.js
+¦       ¦       ¦       
+¦       ¦       +---vendor
+¦       ¦           +---jquery
+¦       ¦           ¦       jquery.js
+¦       ¦           ¦       jquery.min.js
+¦       ¦           ¦       LICENSE.txt
+¦       ¦           ¦       
+¦       ¦           +---select2
+¦       ¦           ¦   ¦   LICENSE.md
+¦       ¦           ¦   ¦   select2.full.js
+¦       ¦           ¦   ¦   select2.full.min.js
+¦       ¦           ¦   ¦   
+¦       ¦           ¦   +---i18n
+¦       ¦           ¦           af.js
+¦       ¦           ¦           ar.js
+¦       ¦           ¦           az.js
+¦       ¦           ¦           bg.js
+¦       ¦           ¦           bn.js
+¦       ¦           ¦           bs.js
+¦       ¦           ¦           ca.js
+¦       ¦           ¦           cs.js
+¦       ¦           ¦           da.js
+¦       ¦           ¦           de.js
+¦       ¦           ¦           dsb.js
+¦       ¦           ¦           el.js
+¦       ¦           ¦           en.js
+¦       ¦           ¦           es.js
+¦       ¦           ¦           et.js
+¦       ¦           ¦           eu.js
+¦       ¦           ¦           fa.js
+¦       ¦           ¦           fi.js
+¦       ¦           ¦           fr.js
+¦       ¦           ¦           gl.js
+¦       ¦           ¦           he.js
+¦       ¦           ¦           hi.js
+¦       ¦           ¦           hr.js
+¦       ¦           ¦           hsb.js
+¦       ¦           ¦           hu.js
+¦       ¦           ¦           hy.js
+¦       ¦           ¦           id.js
+¦       ¦           ¦           is.js
+¦       ¦           ¦           it.js
+¦       ¦           ¦           ja.js
+¦       ¦           ¦           ka.js
+¦       ¦           ¦           km.js
+¦       ¦           ¦           ko.js
+¦       ¦           ¦           lt.js
+¦       ¦           ¦           lv.js
+¦       ¦           ¦           mk.js
+¦       ¦           ¦           ms.js
+¦       ¦           ¦           nb.js
+¦       ¦           ¦           ne.js
+¦       ¦           ¦           nl.js
+¦       ¦           ¦           pl.js
+¦       ¦           ¦           ps.js
+¦       ¦           ¦           pt-BR.js
+¦       ¦           ¦           pt.js
+¦       ¦           ¦           ro.js
+¦       ¦           ¦           ru.js
+¦       ¦           ¦           sk.js
+¦       ¦           ¦           sl.js
+¦       ¦           ¦           sq.js
+¦       ¦           ¦           sr-Cyrl.js
+¦       ¦           ¦           sr.js
+¦       ¦           ¦           sv.js
+¦       ¦           ¦           th.js
+¦       ¦           ¦           tk.js
+¦       ¦           ¦           tr.js
+¦       ¦           ¦           uk.js
+¦       ¦           ¦           vi.js
+¦       ¦           ¦           zh-CN.js
+¦       ¦           ¦           zh-TW.js
+¦       ¦           ¦           
+¦       ¦           +---xregexp
+¦       ¦                   LICENSE.txt
+¦       ¦                   xregexp.js
+¦       ¦                   xregexp.min.js
+¦       ¦                   
+¦       +---css
+¦       ¦       model_prediction.css
+¦       ¦       
+¦       +---fonts
+¦       ¦   ¦   Inter-Italic-VariableFont_opsz,wght.ttf
+¦       ¦   ¦   Inter-VariableFont_opsz,wght.ttf
+¦       ¦   ¦   
+¦       ¦   +---static
+¦       ¦           Inter_18pt-Black.ttf
+¦       ¦           Inter_18pt-BlackItalic.ttf
+¦       ¦           Inter_18pt-Bold.ttf
+¦       ¦           Inter_18pt-BoldItalic.ttf
+¦       ¦           Inter_18pt-ExtraBold.ttf
+¦       ¦           Inter_18pt-ExtraBoldItalic.ttf
+¦       ¦           Inter_18pt-ExtraLight.ttf
+¦       ¦           Inter_18pt-ExtraLightItalic.ttf
+¦       ¦           Inter_18pt-Italic.ttf
+¦       ¦           Inter_18pt-Light.ttf
+¦       ¦           Inter_18pt-LightItalic.ttf
+¦       ¦           Inter_18pt-Medium.ttf
+¦       ¦           Inter_18pt-MediumItalic.ttf
+¦       ¦           Inter_18pt-Regular.ttf
+¦       ¦           Inter_18pt-SemiBold.ttf
+¦       ¦           Inter_18pt-SemiBoldItalic.ttf
+¦       ¦           Inter_18pt-Thin.ttf
+¦       ¦           Inter_18pt-ThinItalic.ttf
+¦       ¦           Inter_24pt-Black.ttf
+¦       ¦           Inter_24pt-BlackItalic.ttf
+¦       ¦           Inter_24pt-Bold.ttf
+¦       ¦           Inter_24pt-BoldItalic.ttf
+¦       ¦           Inter_24pt-ExtraBold.ttf
+¦       ¦           Inter_24pt-ExtraBoldItalic.ttf
+¦       ¦           Inter_24pt-ExtraLight.ttf
+¦       ¦           Inter_24pt-ExtraLightItalic.ttf
+¦       ¦           Inter_24pt-Italic.ttf
+¦       ¦           Inter_24pt-Light.ttf
+¦       ¦           Inter_24pt-LightItalic.ttf
+¦       ¦           Inter_24pt-Medium.ttf
+¦       ¦           Inter_24pt-MediumItalic.ttf
+¦       ¦           Inter_24pt-Regular.ttf
+¦       ¦           Inter_24pt-SemiBold.ttf
+¦       ¦           Inter_24pt-SemiBoldItalic.ttf
+¦       ¦           Inter_24pt-Thin.ttf
+¦       ¦           Inter_24pt-ThinItalic.ttf
+¦       ¦           Inter_28pt-Black.ttf
+¦       ¦           Inter_28pt-BlackItalic.ttf
+¦       ¦           Inter_28pt-Bold.ttf
+¦       ¦           Inter_28pt-BoldItalic.ttf
+¦       ¦           Inter_28pt-ExtraBold.ttf
+¦       ¦           Inter_28pt-ExtraBoldItalic.ttf
+¦       ¦           Inter_28pt-ExtraLight.ttf
+¦       ¦           Inter_28pt-ExtraLightItalic.ttf
+¦       ¦           Inter_28pt-Italic.ttf
+¦       ¦           Inter_28pt-Light.ttf
+¦       ¦           Inter_28pt-LightItalic.ttf
+¦       ¦           Inter_28pt-Medium.ttf
+¦       ¦           Inter_28pt-MediumItalic.ttf
+¦       ¦           Inter_28pt-Regular.ttf
+¦       ¦           Inter_28pt-SemiBold.ttf
+¦       ¦           Inter_28pt-SemiBoldItalic.ttf
+¦       ¦           Inter_28pt-Thin.ttf
+¦       ¦           Inter_28pt-ThinItalic.ttf
+¦       ¦           
+¦       +---images
+¦       ¦       b38a3c77-edca-ec11-a7b5-000d3aa8f2d0.png
+¦       ¦       img.png
+¦       ¦       novaims.png
+¦       ¦       
+¦       +---staticfiles
+¦           ¦   feature_importance.png
+¦           ¦   
+¦           +---admin
+¦           ¦   +---css
+¦           ¦   ¦   ¦   autocomplete.css
+¦           ¦   ¦   ¦   base.css
+¦           ¦   ¦   ¦   changelists.css
+¦           ¦   ¦   ¦   dark_mode.css
+¦           ¦   ¦   ¦   dashboard.css
+¦           ¦   ¦   ¦   forms.css
+¦           ¦   ¦   ¦   login.css
+¦           ¦   ¦   ¦   nav_sidebar.css
+¦           ¦   ¦   ¦   responsive.css
+¦           ¦   ¦   ¦   responsive_rtl.css
+¦           ¦   ¦   ¦   rtl.css
+¦           ¦   ¦   ¦   unusable_password_field.css
+¦           ¦   ¦   ¦   widgets.css
+¦           ¦   ¦   ¦   
+¦           ¦   ¦   +---vendor
+¦           ¦   ¦       +---select2
+¦           ¦   ¦               LICENSE-SELECT2.md
+¦           ¦   ¦               select2.css
+¦           ¦   ¦               select2.min.css
+¦           ¦   ¦               
+¦           ¦   +---img
+¦           ¦   ¦   ¦   calendar-icons.svg
+¦           ¦   ¦   ¦   icon-addlink.svg
+¦           ¦   ¦   ¦   icon-alert.svg
+¦           ¦   ¦   ¦   icon-calendar.svg
+¦           ¦   ¦   ¦   icon-changelink.svg
+¦           ¦   ¦   ¦   icon-clock.svg
+¦           ¦   ¦   ¦   icon-deletelink.svg
+¦           ¦   ¦   ¦   icon-hidelink.svg
+¦           ¦   ¦   ¦   icon-no.svg
+¦           ¦   ¦   ¦   icon-unknown-alt.svg
+¦           ¦   ¦   ¦   icon-unknown.svg
+¦           ¦   ¦   ¦   icon-viewlink.svg
+¦           ¦   ¦   ¦   icon-yes.svg
+¦           ¦   ¦   ¦   inline-delete.svg
+¦           ¦   ¦   ¦   LICENSE
+¦           ¦   ¦   ¦   README.txt
+¦           ¦   ¦   ¦   search.svg
+¦           ¦   ¦   ¦   selector-icons.svg
+¦           ¦   ¦   ¦   sorting-icons.svg
+¦           ¦   ¦   ¦   tooltag-add.svg
+¦           ¦   ¦   ¦   tooltag-arrowright.svg
+¦           ¦   ¦   ¦   
+¦           ¦   ¦   +---gis
+¦           ¦   ¦           move_vertex_off.svg
+¦           ¦   ¦           move_vertex_on.svg
+¦           ¦   ¦           
+¦           ¦   +---js
+¦           ¦       ¦   actions.js
+¦           ¦       ¦   autocomplete.js
+¦           ¦       ¦   calendar.js
+¦           ¦       ¦   cancel.js
+¦           ¦       ¦   change_form.js
+¦           ¦       ¦   core.js
+¦           ¦       ¦   filters.js
+¦           ¦       ¦   inlines.js
+¦           ¦       ¦   jquery.init.js
+¦           ¦       ¦   nav_sidebar.js
+¦           ¦       ¦   popup_response.js
+¦           ¦       ¦   prepopulate.js
+¦           ¦       ¦   prepopulate_init.js
+¦           ¦       ¦   SelectBox.js
+¦           ¦       ¦   SelectFilter2.js
+¦           ¦       ¦   theme.js
+¦           ¦       ¦   unusable_password_field.js
+¦           ¦       ¦   urlify.js
+¦           ¦       ¦   
+¦           ¦       +---admin
+¦           ¦       ¦       DateTimeShortcuts.js
+¦           ¦       ¦       RelatedObjectLookups.js
+¦           ¦       ¦       
+¦           ¦       +---vendor
+¦           ¦           +---jquery
+¦           ¦           ¦       jquery.js
+¦           ¦           ¦       jquery.min.js
+¦           ¦           ¦       LICENSE.txt
+¦           ¦           ¦       
+¦           ¦           +---select2
+¦           ¦           ¦   ¦   LICENSE.md
+¦           ¦           ¦   ¦   select2.full.js
+¦           ¦           ¦   ¦   select2.full.min.js
+¦           ¦           ¦   ¦   
+¦           ¦           ¦   +---i18n
+¦           ¦           ¦           af.js
+¦           ¦           ¦           ar.js
+¦           ¦           ¦           az.js
+¦           ¦           ¦           bg.js
+¦           ¦           ¦           bn.js
+¦           ¦           ¦           bs.js
+¦           ¦           ¦           ca.js
+¦           ¦           ¦           cs.js
+¦           ¦           ¦           da.js
+¦           ¦           ¦           de.js
+¦           ¦           ¦           dsb.js
+¦           ¦           ¦           el.js
+¦           ¦           ¦           en.js
+¦           ¦           ¦           es.js
+¦           ¦           ¦           et.js
+¦           ¦           ¦           eu.js
+¦           ¦           ¦           fa.js
+¦           ¦           ¦           fi.js
+¦           ¦           ¦           fr.js
+¦           ¦           ¦           gl.js
+¦           ¦           ¦           he.js
+¦           ¦           ¦           hi.js
+¦           ¦           ¦           hr.js
+¦           ¦           ¦           hsb.js
+¦           ¦           ¦           hu.js
+¦           ¦           ¦           hy.js
+¦           ¦           ¦           id.js
+¦           ¦           ¦           is.js
+¦           ¦           ¦           it.js
+¦           ¦           ¦           ja.js
+¦           ¦           ¦           ka.js
+¦           ¦           ¦           km.js
+¦           ¦           ¦           ko.js
+¦           ¦           ¦           lt.js
+¦           ¦           ¦           lv.js
+¦           ¦           ¦           mk.js
+¦           ¦           ¦           ms.js
+¦           ¦           ¦           nb.js
+¦           ¦           ¦           ne.js
+¦           ¦           ¦           nl.js
+¦           ¦           ¦           pl.js
+¦           ¦           ¦           ps.js
+¦           ¦           ¦           pt-BR.js
+¦           ¦           ¦           pt.js
+¦           ¦           ¦           ro.js
+¦           ¦           ¦           ru.js
+¦           ¦           ¦           sk.js
+¦           ¦           ¦           sl.js
+¦           ¦           ¦           sq.js
+¦           ¦           ¦           sr-Cyrl.js
+¦           ¦           ¦           sr.js
+¦           ¦           ¦           sv.js
+¦           ¦           ¦           th.js
+¦           ¦           ¦           tk.js
+¦           ¦           ¦           tr.js
+¦           ¦           ¦           uk.js
+¦           ¦           ¦           vi.js
+¦           ¦           ¦           zh-CN.js
+¦           ¦           ¦           zh-TW.js
+¦           ¦           ¦           
+¦           ¦           +---xregexp
+¦           ¦                   LICENSE.txt
+¦           ¦                   xregexp.js
+¦           ¦                   xregexp.min.js
+¦           ¦                   
+¦           +---css
+¦           ¦       model_prediction.css
+¦           ¦       
+¦           +---fonts
+¦           ¦   ¦   Inter-Italic-VariableFont_opsz,wght.ttf
+¦           ¦   ¦   Inter-VariableFont_opsz,wght.ttf
+¦           ¦   ¦   
+¦           ¦   +---static
+¦           ¦           Inter_18pt-Black.ttf
+¦           ¦           Inter_18pt-BlackItalic.ttf
+¦           ¦           Inter_18pt-Bold.ttf
+¦           ¦           Inter_18pt-BoldItalic.ttf
+¦           ¦           Inter_18pt-ExtraBold.ttf
+¦           ¦           Inter_18pt-ExtraBoldItalic.ttf
+¦           ¦           Inter_18pt-ExtraLight.ttf
+¦           ¦           Inter_18pt-ExtraLightItalic.ttf
+¦           ¦           Inter_18pt-Italic.ttf
+¦           ¦           Inter_18pt-Light.ttf
+¦           ¦           Inter_18pt-LightItalic.ttf
+¦           ¦           Inter_18pt-Medium.ttf
+¦           ¦           Inter_18pt-MediumItalic.ttf
+¦           ¦           Inter_18pt-Regular.ttf
+¦           ¦           Inter_18pt-SemiBold.ttf
+¦           ¦           Inter_18pt-SemiBoldItalic.ttf
+¦           ¦           Inter_18pt-Thin.ttf
+¦           ¦           Inter_18pt-ThinItalic.ttf
+¦           ¦           Inter_24pt-Black.ttf
+¦           ¦           Inter_24pt-BlackItalic.ttf
+¦           ¦           Inter_24pt-Bold.ttf
+¦           ¦           Inter_24pt-BoldItalic.ttf
+¦           ¦           Inter_24pt-ExtraBold.ttf
+¦           ¦           Inter_24pt-ExtraBoldItalic.ttf
+¦           ¦           Inter_24pt-ExtraLight.ttf
+¦           ¦           Inter_24pt-ExtraLightItalic.ttf
+¦           ¦           Inter_24pt-Italic.ttf
+¦           ¦           Inter_24pt-Light.ttf
+¦           ¦           Inter_24pt-LightItalic.ttf
+¦           ¦           Inter_24pt-Medium.ttf
+¦           ¦           Inter_24pt-MediumItalic.ttf
+¦           ¦           Inter_24pt-Regular.ttf
+¦           ¦           Inter_24pt-SemiBold.ttf
+¦           ¦           Inter_24pt-SemiBoldItalic.ttf
+¦           ¦           Inter_24pt-Thin.ttf
+¦           ¦           Inter_24pt-ThinItalic.ttf
+¦           ¦           Inter_28pt-Black.ttf
+¦           ¦           Inter_28pt-BlackItalic.ttf
+¦           ¦           Inter_28pt-Bold.ttf
+¦           ¦           Inter_28pt-BoldItalic.ttf
+¦           ¦           Inter_28pt-ExtraBold.ttf
+¦           ¦           Inter_28pt-ExtraBoldItalic.ttf
+¦           ¦           Inter_28pt-ExtraLight.ttf
+¦           ¦           Inter_28pt-ExtraLightItalic.ttf
+¦           ¦           Inter_28pt-Italic.ttf
+¦           ¦           Inter_28pt-Light.ttf
+¦           ¦           Inter_28pt-LightItalic.ttf
+¦           ¦           Inter_28pt-Medium.ttf
+¦           ¦           Inter_28pt-MediumItalic.ttf
+¦           ¦           Inter_28pt-Regular.ttf
+¦           ¦           Inter_28pt-SemiBold.ttf
+¦           ¦           Inter_28pt-SemiBoldItalic.ttf
+¦           ¦           Inter_28pt-Thin.ttf
+¦           ¦           Inter_28pt-ThinItalic.ttf
+¦           ¦           
+¦           +---images
+¦                   b38a3c77-edca-ec11-a7b5-000d3aa8f2d0.png
+¦                   img.png
+¦                   novaims.png
+¦                   
++---utils
+¦   ¦   ml_utils.py
+¦   ¦   
+¦   +---__pycache__
+¦           ml_utils.cpython-312.pyc
+¦           
++---wcb
+    ¦   admin.py
+    ¦   apps.py
+    ¦   forms.py
+    ¦   models.py
+    ¦   tests.py
+    ¦   views.py
+    ¦   __init__.py
+    ¦   
+    +---migrations
+    ¦   ¦   0001_initial.py
+    ¦   ¦   0002_modelmetrics.py
+    ¦   ¦   __init__.py
+    ¦   ¦   
+    ¦   +---__pycache__
+    ¦           0001_initial.cpython-312.pyc
+    ¦           0002_modelmetrics.cpython-312.pyc
+    ¦           __init__.cpython-312.pyc
+    ¦           
+    +---templates
+    ¦   ¦   data_summary.html
+    ¦   ¦   feature_importance.html
+    ¦   ¦   index.html
+    ¦   ¦   model_prediction.html
+    ¦   ¦   
+    ¦   +---base
+    ¦           base.html
+    ¦           navbar.html
+    ¦           
+    +---__pycache__
+            admin.cpython-312.pyc
+            apps.cpython-312.pyc
+            forms.cpython-312.pyc
+            models.cpython-312.pyc
+            views.cpython-312.pyc
+            __init__.cpython-312.pyc
+            

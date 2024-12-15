@@ -1,0 +1,72 @@
+/* Apply Inter font */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styles for spacing */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Space between sections */
+}
+
+/* Fieldset styling */
+fieldset {
+    border: 1px solid #ccc;
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Flexbox grid for fields */
+fieldset .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem; /* Horizontal (2rem) and vertical (1rem) spacing */
+    margin-bottom: 1rem; /* Add margin below each row */
+}
+
+fieldset .form-row > div {
+    flex: 1 1 calc(33.333% - 2rem); /* Three fields per row with spacing */
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/* Input and select styling */
+input, select {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem; /* Space between fields and rows */
+}
+
+/* Submit button styling */
+button[type="submit"] {
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
