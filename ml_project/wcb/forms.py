@@ -33,22 +33,18 @@ class ModelForm(forms.Form):
             ('3A. SELF PUBLIC', '3A. SELF PUBLIC')
         ]
     )
-    district_name = forms.ChoiceField(
-        label='District Name',
-        choices=[('NYC', 'NYC')],
-    )
+
     gender = forms.ChoiceField(
         label='Gender',
         choices=[('F', 'Female'), ('M', 'Male')]
     )
-    medical_fee_region = forms.ChoiceField(
-        label='Medical Fee Region',
-        choices=[('IV', 'Region IV')]
-    )
+
 
     # Text input fields
-    carrier_name = forms.CharField(label='Carrier Name', max_length=100)
-    county_of_injury = forms.CharField(label='County of Injury', max_length=100)
+    district_name = forms.CharField(label='District Name', max_length=50)
+    medical_fee_region = forms.CharField(label='Medical Fee Region', max_length=50)
+    carrier_name = forms.CharField(label='Carrier Name', max_length=50)
+    county_of_injury = forms.CharField(label='County of Injury', max_length=50)
     industry_code = forms.CharField(label='Industry Code', max_length=10)
     wcio_cause_of_injury_code = forms.CharField(label='WCIO Cause of Injury Code', max_length=10)
     wcio_nature_of_injury_code = forms.CharField(label='WCIO Nature of Injury Code', max_length=10)
