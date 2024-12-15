@@ -31,4 +31,4 @@ urlpatterns = [
     path('data_summary/', views.data_summary, name='data_summary'),
 ]
 
-urlpatterns += static(settings.STATIC_ROOT, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
