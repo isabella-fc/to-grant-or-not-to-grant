@@ -19,11 +19,11 @@ def home(request):
 
 def model_prediction(request):
     feature_importance_path = os.path.join(settings.BASE_DIR, 'static', 'feature_importance.png')
-    zip_codes = NYZipCode.objects.all()
+    zip_codes = NYZipCode.objects.all().values('zip_code', 'encoded_value')
     form = ModelForm(request.POST)
 
     if request.method == 'POST':
-        zip_codes = NYZipCode.objects.all()
+
 
         if form.is_valid():
 
@@ -89,6 +89,10 @@ def feature_importance(request):
     plt.title('Feature Importance')
     plt.savefig(os.path.join(settings.BASE_DIR, 'static', 'feature_importance.png'))
     return render(request, 'feature_importance.html', {'plot': 'feature_importance.png'})
+
+def binary_prediction(request):
+
+    return
 
 
 #def model_performance(request):

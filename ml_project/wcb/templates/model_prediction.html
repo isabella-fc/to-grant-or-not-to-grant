@@ -7,13 +7,6 @@
         <link href="{% static 'fonts/Inter-VariableFont_opsz,wght.ttf' %}" rel="stylesheet">
         <script src="{% static 'js/model_prediction.js' %}" defer></script>
         <link href="{% static 'css/model_prediction.css' %}" rel="stylesheet" media="screen">
-        <datalist id="zip_codes">
-            {% for zip in zip_codes %}
-                <option value="{{ zip.zip_code }}">{{ zip.zip_code }} ({{ zip.county }})</option>
-            {% endfor %}
-        </datalist>
-
-
         <title>Workers' Compensation Board Prediction Model</title>
         {{ form.media }}
     </head>
@@ -40,7 +33,7 @@
             </fieldset>
 
             <fieldset>
-                <legend>Accident Details</legend>
+                <legend>Claim Details</legend>
                 <div class="form-row">
                     <div>
                         {{ form.accident_date.label_tag }} {{ form.accident_date }}
@@ -54,9 +47,10 @@
                                placeholder="Search zip codes...">
                         <datalist id="zip_codes">
                             {% for zip in zip_codes %}
-                                <option value="{{ zip.zip_code }}">{{ zip.zip_code }} ({{ zip.county }})</option>
+                                <option value="{{ zip.zip_code }}">{{ zip.zip_code }}</option>
                             {% endfor %}
                         </datalist>
+                        <input type="hidden" id="encoded_value" name="encoded_value">
                     </div>
                 </div>
                 <div class="form-row">
@@ -66,7 +60,24 @@
                 </div>
                 <div class="form-row">
                     <div>{{ form.assembly_date.label_tag }} {{ form.assembly_date }}</div>
+                    <div>{{ form.c2_date.label_tag }} {{ form.c2_date }}</div>
+                    <div class="radio-group">
+                        {{ form.c3_form_submitted.label_tag }}
+                        {{ form.c3_form_submitted }}
+                    </div>
                 </div>
+                <div class="form-row">
+                    <div class="radio-group">
+                        {{ form.first_hearing_date.label_tag }}
+                        {{ form.first_hearing_date }}
+                    </div>
+                    <div class="radio-group">
+                        {{ form.alternative_dispute_resolution.label_tag }}
+                        {{ form.alternative_dispute_resolution }}
+                    </div>
+                </div>
+
+
             </fieldset>
 
             <fieldset>
@@ -91,18 +102,12 @@
                         {{ form.covid_indicator.label_tag }}
                         {{ form.covid_indicator }}
                     </div>
+                     <div>{{ form.carrier_name.label_tag }} {{ form.carrier_name }}</div>
                 </div>
-            </fieldset>
-
-
-            <fieldset>
-                <legend>Carrier Information</legend>
                 <div class="form-row">
-                    <div>{{ form.carrier_name.label_tag }} {{ form.carrier_name }}</div>
                     <div>{{ form.carrier_type.label_tag }} {{ form.carrier_type }}</div>
                 </div>
             </fieldset>
-
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 

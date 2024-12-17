@@ -28,7 +28,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     path('', views.home, name='home'),
-    path('model_prediction/', views.model_prediction, name='model_prediction'),
+    path('multiclass-prediction/', views.model_prediction, name='model_prediction'),
     path('feature_importance/', views.feature_importance, name='feature_importance'),
 
     path('nyzipcode-autocomplete/', views.NYZipCodeAutocomplete.as_view(), name='nyzipcode-autocomplete'),

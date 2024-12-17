@@ -45,3 +45,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const zipInput = document.getElementById('id_zip_code');
+    const encodedField = document.getElementById('encoded_value');
+    const dataListOptions = document.querySelectorAll('#zip_codes option');
+
+    zipInput.addEventListener('input', function () {
+        const selectedValue = zipInput.value;
+        encodedField.value = ''; // Reset hidden field
+
+        // Find the matching option and set the frequency
+        dataListOptions.forEach(option => {
+            if (option.value === selectedValue) {
+                encodedField.value = option.dataset.encodedValue;
+            }
+        });
+    });
+});
