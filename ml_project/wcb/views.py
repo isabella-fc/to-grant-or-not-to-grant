@@ -9,9 +9,9 @@ from utils.ml_utils import *
 import pickle
 from django.http import JsonResponse
 from dal import autocomplete
-from wcb.models import NYZipCode
+from wcb.models import NYZipCode, CarrierName
 
-MODEL_PATH = os.path.join(settings.BASE_DIR, 'ml_project', 'ml_model', 'wcb_model.pkl')
+MODEL_PATH = os.path.join(settings.BASE_DIR, 'ml_project', 'ml_model', 'final_model.pkl')
 
 def home(request):
     return render(request, 'index.html')
@@ -20,6 +20,7 @@ def home(request):
 def model_prediction(request):
     feature_importance_path = os.path.join(settings.BASE_DIR, 'static', 'feature_importance.png')
     zip_codes = NYZipCode.objects.all().values('zip_code', 'encoded_value')
+    carrier_names = CarrierName.objects.all().values('carrier_name', 'encoded_value')
     form = ModelForm(request.POST)
 
     if request.method == 'POST':
@@ -36,7 +37,7 @@ def model_prediction(request):
 
             # Make prediction
             # Prepare model features from form data
-            model_features = preprocess_form(pd.DataFrame([form.cleaned_data]))
+            model_features = preprocess_form(form.cleaned_data)
 
             # Make prediction
             prediction = loaded_model.predict(model_features)
@@ -74,7 +75,7 @@ def model_prediction(request):
     else:
         form = ModelForm()
 
-    return render(request, 'model_prediction.html', {'form': form, 'zip_codes': zip_codes})
+    return render(request, 'model_prediction.html', {'form': form, 'zip_codes': zip_codes, 'carrier_names': carrier_names})
 
 
 

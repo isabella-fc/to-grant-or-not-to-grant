@@ -1,7 +1,4 @@
 from django import forms
-from dal import autocomplete
-from wcb.models import NYZipCode, CarrierName
-
 
 class ModelForm(forms.Form):
     # Numeric fields
@@ -160,10 +157,10 @@ class ModelForm(forms.Form):
             ('YATES', 'Yates'),
         ]
     )
-    industry_code = forms.CharField(label='Industry Code', max_length=10)
-    wcio_cause_of_injury_code = forms.CharField(label='WCIO Cause of Injury Code', max_length=10)
-    wcio_nature_of_injury_code = forms.CharField(label='WCIO Nature of Injury Code', max_length=10)
-    wcio_part_of_body_code = forms.CharField(label='WCIO Part of Body Code', max_length=10)
+    industry_code = forms.CharField(label='Industry Code', max_length=10, required=False)
+    wcio_cause_of_injury_code = forms.CharField(label='WCIO Cause of Injury Code', max_length=10, required=False)
+    wcio_nature_of_injury_code = forms.CharField(label='WCIO Nature of Injury Code', max_length=10, required=False)
+    wcio_part_of_body_code = forms.CharField(label='WCIO Part of Body Code', max_length=10, required=False)
 
     zip_code = forms.CharField(
         label='Zip Code',
@@ -174,10 +171,11 @@ class ModelForm(forms.Form):
         })
     )
 
-    carrier_name = forms.ChoiceField(
+    carrier_name = forms.CharField(
         label='Carrier Name',
-        choices=[],  # Choices will be populated dynamically
-        widget=forms.Select(attrs={'class': 'form-control'})
+        widget=forms.TextInput(attrs={
+            'list': 'carrier_names',
+            'class': 'form-control',
+            'placeholder': 'Search carrier name...'
+        })
     )
-
-

@@ -85,7 +85,7 @@ input, select {
 }
 
 /* Zip Code Field: Same Styling */
-#id_zip_code {
+#id_zip_code, #id_carrier_name {
     max-width: 350px;
     flex: 1 1 calc(40% - 1.5rem);
     padding: 0.7rem;
@@ -96,7 +96,7 @@ input, select {
 }
 
 /* Focus effect for all fields */
-input:focus, select:focus, #id_zip_code:focus {
+input:focus, select:focus, #id_zip_code:focus, #id_carrier_name:focus {
     border-color: #a5c443;
     box-shadow: 0 0 5px rgba(201, 221, 86, 0.7);
     transform: scale(1.02);

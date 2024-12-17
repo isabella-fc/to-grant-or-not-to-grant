@@ -52,14 +52,34 @@ document.addEventListener('DOMContentLoaded', function () {
     const dataListOptions = document.querySelectorAll('#zip_codes option');
 
     zipInput.addEventListener('input', function () {
-        const selectedValue = zipInput.value;
+        const selectedValue = zipInput.value.trim();
         encodedField.value = ''; // Reset hidden field
 
-        // Find the matching option and set the frequency
-        dataListOptions.forEach(option => {
-            if (option.value === selectedValue) {
-                encodedField.value = option.dataset.encodedValue;
-            }
-        });
+        // Find the matching option and set the encoded value
+        const matchedOption = Array.from(dataListOptions).find(option => option.value === selectedValue);
+        if (matchedOption) {
+            console.log("Matched Zip:", matchedOption.value);
+            console.log("Encoded Value:", matchedOption.dataset.encodedValue);
+            encodedField.value = matchedOption.dataset.encodedValue;
+        } else {
+            console.log("No match found for:", selectedValue);
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const carrierInput = document.getElementById('id_carrier_name');
+    const encodedField = document.getElementById('encoded_value_carrier');
+    const dataListOptions = document.querySelectorAll('#carrier_names option');
+
+    carrierInput.addEventListener('input', function () {
+        const selectedValue = carrierInput.value;
+        encodedField.value = ''; // Reset hidden field
+
+        // Find the matching option and set the encoded value
+        const matchedOption = Array.from(dataListOptions).find(option => option.value === selectedValue);
+        if (matchedOption) {
+            encodedField.value = matchedOption.dataset.encodedValue; // Correct dataset reference
+        }
     });
 });
