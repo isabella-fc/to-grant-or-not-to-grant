@@ -1,6 +1,11 @@
+import os
 import pandas as pd
 import numpy as np
+import pickle
+from django.conf import settings
 from sklearn.preprocessing import RobustScaler
+import re
+
 
 def preprocess_form(form_data):
     """
@@ -84,5 +89,13 @@ def preprocess_form(form_data):
     return form_data
 
 
+def decode_prediction(prediction):
+    """
+    Decodes the model prediction into a readable format.
+    """
 
+    # open label encoder
+    with (open(os.path.join(settings.BASE_DIR, 'ml_project', 'ml_model', 'label_encoder.pkl'), 'rb')
+          as le_file): label_encoder = pickle.load(le_file)
 
+    return label_encoder.inverse_transform(prediction)

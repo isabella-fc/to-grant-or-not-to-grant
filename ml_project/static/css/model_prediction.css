@@ -27,32 +27,102 @@ legend {
 }
 
 /* Flexbox grid for fields */
-fieldset .form-row {
+fieldset .form-row,
+fieldset .form-row-nested {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem 2rem; /* Horizontal (2rem) and vertical (1rem) spacing */
-    margin-bottom: 1rem; /* Add margin below each row */
+    gap: 1rem 2rem; /* Adjusted spacing for consistent rows */
+    margin-bottom: 1rem;
+    align-items: flex-start; /* Align all items to the top edge */
 }
 
-fieldset .form-row > div {
-    flex: 1 1 calc(33.333% - 2rem); /* Three fields per row with spacing */
+fieldset .form-row > div,
+fieldset .form-row-nested > div {
+    flex: 1 1 calc(33.333% - 2rem); /* Three fields per row with equal spacing */
     display: flex;
     flex-direction: column;
 }
 
+/* Label styling */
 label {
     margin-bottom: 0.5rem;
     font-weight: bold;
+    color: #333;
 }
 
-/* Input and select styling */
+/* Radio button groups */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Space between radio options */
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center; /* Align vertically */
+    gap: 0.5rem; /* Space between radio button and text */
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Custom Radio Button Styling */
+input[type="radio"] {
+    appearance: none;
+    width: 1rem; /* Default small size */
+    height: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 50%; /* Circular shape */
+    outline: none;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    margin: 0; /* Remove additional spacing */
+    vertical-align: middle;
+}
+
+/* Focus state styling */
+input[type="radio"]:focus {
+    border-color: #c9dd56;
+    box-shadow: 0 0 3px rgba(201, 221, 86, 0.7); /* Subtle glow */
+}
+
+/* Checked state styling */
+input[type="radio"]:checked {
+    border-color: #c9dd56; /* Green border */
+    background-color: #c9dd56;
+}
+
+/* Inner dot for checked radio button */
+input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.4rem; /* Smaller centered dot */
+    height: 0.4rem;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* General Input and Select Styling */
 input, select {
-    padding: 0.75rem;
+    width: 100%;
+    max-width: 350px; /* Standard size for consistency */
+    padding: 0.7rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
     box-sizing: border-box;
-    margin-bottom: 0.5rem; /* Space between fields and rows */
+    margin-bottom: 0.5rem;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Focus effect for all fields */
+input:focus, select:focus {
+    border-color: #c9dd56;
+    box-shadow: 0 0 5px rgba(201, 221, 86, 0.7);
+    transform: scale(1.02);
 }
 
 /* Submit button styling */
@@ -65,8 +135,42 @@ button[type="submit"] {
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: #c9dd56;
+    background-color: #b3c644;
+    transform: scale(1.03);
+}
+
+/* Loading overlay styling */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #c9dd56;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

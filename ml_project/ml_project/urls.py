@@ -21,6 +21,8 @@ import wcb.views as views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
 urlpatterns = [
 
     path("admin/", admin.site.urls),
@@ -28,7 +30,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('model_prediction/', views.model_prediction, name='model_prediction'),
     path('feature_importance/', views.feature_importance, name='feature_importance'),
-    path('data_summary/', views.data_summary, name='data_summary'),
+
+    path('nyzipcode-autocomplete/', views.NYZipCodeAutocomplete.as_view(), name='nyzipcode-autocomplete'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -20,9 +20,9 @@ class Predictions(models.Model):
     petal_width = models.DecimalField(decimal_places=2, max_digits=3)
     prediction = models.CharField(choices=PREDICT_OPTIONS, max_length=10)
 
-class ModelMetrics(models.Model):
-    accuracy = models.FloatField()
-    precision = models.FloatField()
-    recall = models.FloatField()
-    f1_score = models.FloatField()
-    created_at = models.DateTimeField(auto_now_add=True)
+class NYZipCode(models.Model):
+    zip_code = models.CharField(max_length=5)
+    county = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.zip_code} ({self.county})"

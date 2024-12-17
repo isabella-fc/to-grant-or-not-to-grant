@@ -2,71 +2,130 @@
 {% load static %}
 
 {% block content %}
-<head>
-    <link href="{% static 'fonts/Inter-VariableFont_opsz,wght.ttf' %}" rel="stylesheet">
-    <link href="{% static 'css/model_prediction.css' %}" rel="stylesheet" media="screen">
-    <title>Workers' Compensation Board Prediction Model</title>
-</head>
-{% include 'base/navbar.html' %}
-<body>
-<div class="container my-5">
-    <form method="post">
-        {% csrf_token %}
-        
-        <fieldset>
-            <legend>Employee Information</legend>
-            <div class="form-row">
-                <div>{{ form.age_at_injury.label_tag }} {{ form.age_at_injury }}</div>
-                <div>{{ form.birth_year.label_tag }} {{ form.birth_year }}</div>
-                <div>{{ form.gender.label_tag }} {{ form.gender }}</div>
-            </div>
-            <div class="form-row">
-                <div>{{ form.number_of_dependents.label_tag }} {{ form.number_of_dependents }}</div>
-                <div>{{ form.average_weekly_wage.label_tag }} {{ form.average_weekly_wage }}</div>
-                <div>{{ form.industry_code.label_tag }} {{ form.industry_code }}</div>
-            </div>
-        </fieldset>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="{% static 'fonts/Inter-VariableFont_opsz,wght.ttf' %}" rel="stylesheet">
+        <script src="{% static 'js/model_prediction.js' %}" defer></script>
+        <link href="{% static 'css/model_prediction.css' %}" rel="stylesheet" media="screen">
+        <datalist id="zip_codes">
+            {% for zip in zip_codes %}
+                <option value="{{ zip.zip_code }}">{{ zip.zip_code }} ({{ zip.county }})</option>
+            {% endfor %}
+        </datalist>
 
-        <fieldset>
-            <legend>Accident Details</legend>
-            <div class="form-row">
-                <div>{{ form.accident_date.label_tag }} {{ form.accident_date }}</div>
-                <div>{{ form.county_of_injury.label_tag }} {{ form.county_of_injury }}</div>
-                <div>{{ form.zip_code.label_tag }} {{ form.zip_code }}</div>
-            </div>
-            <div class="form-row">
-                <div>{{ form.wcio_cause_of_injury_code.label_tag }} {{ form.wcio_cause_of_injury_code }}</div>
-                <div>{{ form.wcio_nature_of_injury_code.label_tag }} {{ form.wcio_nature_of_injury_code }}</div>
-                <div>{{ form.wcio_part_of_body_code.label_tag }} {{ form.wcio_part_of_body_code }}</div>
-            </div>
-            <div class="form-row">
-                <div>{{ form.assembly_date.label_tag }} {{ form.assembly_date }}</div>
-            </div>
-        </fieldset>
 
-        <fieldset>
-            <legend>Medical and Legal Details</legend>
-            <div class="form-row">
-                <div>{{ form.medical_fee_region.label_tag }} {{ form.medical_fee_region }}</div>
-                <div>{{ form.district_name.label_tag }} {{ form.district_name }}</div>
-                <div>{{ form.attorney_representative.label_tag }} {{ form.attorney_representative }}</div>
-            </div>
-            <div class="form-row">
-                <div>{{ form.ime4_count.label_tag }} {{ form.ime4_count }}</div>
-                <div>{{ form.covid_indicator.label_tag }} {{ form.covid_indicator }}</div>
-            </div>
-        </fieldset>
+        <title>Workers' Compensation Board Prediction Model</title>
+        {{ form.media }}
+    </head>
+    {% include 'base/navbar.html' %}
+    <body>
+    <div class="container my-5">
 
-        <fieldset>
-            <legend>Carrier Information</legend>
-            <div class="form-row">
-                <div>{{ form.carrier_name.label_tag }} {{ form.carrier_name }}</div>
-                <div>{{ form.carrier_type.label_tag }} {{ form.carrier_type }}</div>
-            </div>
-        </fieldset>
+        <!-- Form Fields -->
+        <form method="post" id="prediction-form">
+            {% csrf_token %}
 
-        <button type="submit">Submit</button>
-    </form>
-</div>
-</body>
+            <fieldset>
+                <legend>Employee Information</legend>
+                <div class="form-row">
+                    <div>{{ form.age_at_injury.label_tag }} {{ form.age_at_injury }}</div>
+                    <div>{{ form.birth_year.label_tag }} {{ form.birth_year }}</div>
+                    <div>{{ form.gender.label_tag }} {{ form.gender }}</div>
+                </div>
+                <div class="form-row">
+                    <div>{{ form.number_of_dependents.label_tag }} {{ form.number_of_dependents }}</div>
+                    <div>{{ form.average_weekly_wage.label_tag }} {{ form.average_weekly_wage }}</div>
+                    <div>{{ form.industry_code.label_tag }} {{ form.industry_code }}</div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Accident Details</legend>
+                <div class="form-row">
+                    <div>
+                        {{ form.accident_date.label_tag }} {{ form.accident_date }}
+                    </div>
+                    <div>
+                        {{ form.county_of_injury.label_tag }} {{ form.county_of_injury }}
+                    </div>
+                    <div>
+                        <label for="id_zip_code">Zip Code:</label>
+                        <input type="text" name="zip_code" id="id_zip_code" list="zip_codes" class="form-control"
+                               placeholder="Search zip codes...">
+                        <datalist id="zip_codes">
+                            {% for zip in zip_codes %}
+                                <option value="{{ zip.zip_code }}">{{ zip.zip_code }} ({{ zip.county }})</option>
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>{{ form.wcio_cause_of_injury_code.label_tag }} {{ form.wcio_cause_of_injury_code }}</div>
+                    <div>{{ form.wcio_nature_of_injury_code.label_tag }} {{ form.wcio_nature_of_injury_code }}</div>
+                    <div>{{ form.wcio_part_of_body_code.label_tag }} {{ form.wcio_part_of_body_code }}</div>
+                </div>
+                <div class="form-row">
+                    <div>{{ form.assembly_date.label_tag }} {{ form.assembly_date }}</div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Medical and Legal Details</legend>
+                <div class="form-row">
+                    <div>
+                        {{ form.medical_fee_region.label_tag }} {{ form.medical_fee_region }}
+                    </div>
+                    <div>
+                        {{ form.district_name.label_tag }} {{ form.district_name }}
+                    </div>
+                    <div>
+                        {{ form.ime4_count.label_tag }} {{ form.ime4_count }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="attorney_representative" value="True"> True
+                        </label>
+                        <label>
+                            <input type="radio" name="attorney_representative" value="False"> False
+                        </label>
+                    </div>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="covid_indicator" value="True"> True
+                        </label>
+                        <label>
+                            <input type="radio" name="covid_indicator" value="False"> False
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+
+            <fieldset>
+                <legend>Carrier Information</legend>
+                <div class="form-row">
+                    <div>{{ form.carrier_name.label_tag }} {{ form.carrier_name }}</div>
+                    <div>{{ form.carrier_type.label_tag }} {{ form.carrier_type }}</div>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" style="display: none;">
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Prediction Result Section -->
+        {% if prediction %}
+            <div id="result-section" style="margin-top: 2rem;">
+                <h2>Prediction Result</h2>
+                <p id="result-text">{{ prediction }}</p>
+            </div>
+        {% endif %}
+    </div>
+    </body>
 {% endblock %}

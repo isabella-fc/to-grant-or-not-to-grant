@@ -7,6 +7,9 @@ from django.conf import settings
 from .forms import ModelForm
 from utils.ml_utils import *
 import pickle
+from django.http import JsonResponse
+from dal import autocomplete
+from wcb.models import NYZipCode
 
 MODEL_PATH = os.path.join(settings.BASE_DIR, 'ml_project', 'ml_model', 'wcb_model.pkl')
 
@@ -16,9 +19,12 @@ def home(request):
 
 def model_prediction(request):
     feature_importance_path = os.path.join(settings.BASE_DIR, 'static', 'feature_importance.png')
+    zip_codes = NYZipCode.objects.all()
+    form = ModelForm(request.POST)
 
     if request.method == 'POST':
-        form = ModelForm(request.POST)
+        zip_codes = NYZipCode.objects.all()
+
         if form.is_valid():
 
             # Load model
@@ -34,7 +40,7 @@ def model_prediction(request):
 
             # Make prediction
             prediction = loaded_model.predict(model_features)
-            prediction_name = f"WCB Class prediction:  {prediction}"
+            prediction_name = decode_prediction(prediction)
 
             # Generate feature importance plot
             importance = loaded_model.feature_importances_
@@ -68,7 +74,7 @@ def model_prediction(request):
     else:
         form = ModelForm()
 
-    return render(request, 'model_prediction.html', {'form': form})
+    return render(request, 'model_prediction.html', {'form': form, 'zip_codes': zip_codes})
 
 
 
@@ -100,11 +106,15 @@ def feature_importance(request):
 #    }
 #    return render(request, 'model_performance.html', {'metrics': metrics})
 
-def data_summary(request):
-    data = pd.read_csv(os.path.join(settings.BASE_DIR, 'data', 'train_data.csv'))
-    summary = {
-        'total_claims': str(len(data)),
-        'covid_related': str(data['COVID-19 Indicator'].sum()),
-        'avg_age': str(data['Age at Injury'].mean()),
-    }
-    return render(request, 'data_summary.html', {'summary': summary})
+
+class NYZipCodeAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        if not self.request.user.is_authenticated:
+            return NYZipCode.objects.none()
+
+        qs = NYZipCode.objects.all()
+
+        # Filter the queryset based on user input
+        if self.q:
+            qs = qs.filter(zip_code__icontains=self.q)  # Search by partial match on zip_code
+        return qs

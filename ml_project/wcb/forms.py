@@ -1,6 +1,7 @@
 from django import forms
+from dal import autocomplete
+from wcb.models import NYZipCode
 
-from django import forms
 
 class ModelForm(forms.Form):
     # Numeric fields
@@ -49,4 +50,14 @@ class ModelForm(forms.Form):
     wcio_cause_of_injury_code = forms.CharField(label='WCIO Cause of Injury Code', max_length=10)
     wcio_nature_of_injury_code = forms.CharField(label='WCIO Nature of Injury Code', max_length=10)
     wcio_part_of_body_code = forms.CharField(label='WCIO Part of Body Code', max_length=10)
-    zip_code = forms.CharField(label='Zip Code', max_length=10)
+
+    zip_code = forms.CharField(
+        label='Zip Code',
+        widget=forms.TextInput(attrs={'list': 'zip_codes', 'class': 'form-control'})
+    )
+
+
+
+
+
+
