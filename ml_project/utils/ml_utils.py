@@ -2,8 +2,6 @@ import os
 import pickle
 from django.conf import settings
 
-import pandas as pd
-import numpy as np
 
 from utils.lists import FEATURE_ORDER, COUNTIES
 

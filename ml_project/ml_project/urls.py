@@ -30,8 +30,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('multiclass-prediction/', views.model_prediction, name='model_prediction'),
     path('feature_importance/', views.feature_importance, name='feature_importance'),
-
-    path('nyzipcode-autocomplete/', views.NYZipCodeAutocomplete.as_view(), name='nyzipcode-autocomplete'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

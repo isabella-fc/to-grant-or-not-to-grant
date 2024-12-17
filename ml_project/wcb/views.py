@@ -1,14 +1,10 @@
-import pandas as pd
-import numpy as np
-import os
+
 import matplotlib.pyplot as plt
 from django.shortcuts import render
-from django.conf import settings
+
 from .forms import ModelForm
 from utils.ml_utils import *
 import pickle
-from django.http import JsonResponse
-from dal import autocomplete
 from wcb.models import NYZipCode, CarrierName
 
 MODEL_PATH = os.path.join(settings.BASE_DIR, 'ml_project', 'ml_model', 'final_model.pkl')
@@ -112,14 +108,3 @@ def binary_prediction(request):
 #    return render(request, 'model_performance.html', {'metrics': metrics})
 
 
-class NYZipCodeAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated:
-            return NYZipCode.objects.none()
-
-        qs = NYZipCode.objects.all()
-
-        # Filter the queryset based on user input
-        if self.q:
-            qs = qs.filter(zip_code__icontains=self.q)  # Search by partial match on zip_code
-        return qs
