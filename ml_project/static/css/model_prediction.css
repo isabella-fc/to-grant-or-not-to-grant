@@ -50,7 +50,13 @@ label {
     color: #333;
 }
 
-/* Radio button groups */
+/* Radio button groups in the same row */
+.radio-group-inline {
+    display: flex;
+    gap: 1.5rem; /* Spacing between radio button groups */
+    align-items: flex-start;
+}
+
 .radio-group {
     display: flex;
     flex-direction: column;
@@ -59,49 +65,9 @@ label {
 
 .radio-group label {
     display: flex;
-    align-items: center; /* Align vertically */
+    align-items: center;
     gap: 0.5rem; /* Space between radio button and text */
     margin: 0;
-    cursor: pointer;
-}
-
-/* Custom Radio Button Styling */
-input[type="radio"] {
-    appearance: none;
-    width: 1rem; /* Default small size */
-    height: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 50%; /* Circular shape */
-    outline: none;
-    position: relative;
-    transition: all 0.2s ease-in-out;
-    margin: 0; /* Remove additional spacing */
-    vertical-align: middle;
-}
-
-/* Focus state styling */
-input[type="radio"]:focus {
-    border-color: #c9dd56;
-    box-shadow: 0 0 3px rgba(201, 221, 86, 0.7); /* Subtle glow */
-}
-
-/* Checked state styling */
-input[type="radio"]:checked {
-    border-color: #c9dd56; /* Green border */
-    background-color: #c9dd56;
-}
-
-/* Inner dot for checked radio button */
-input[type="radio"]:checked::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0.4rem; /* Smaller centered dot */
-    height: 0.4rem;
-    background-color: white;
-    border-radius: 50%;
 }
 
 /* General Input and Select Styling */
@@ -118,9 +84,20 @@ input, select {
     transition: all 0.2s ease-in-out;
 }
 
+/* Zip Code Field: Same Styling */
+#id_zip_code {
+    max-width: 350px;
+    flex: 1 1 calc(40% - 1.5rem);
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+}
+
 /* Focus effect for all fields */
-input:focus, select:focus {
-    border-color: #c9dd56;
+input:focus, select:focus, #id_zip_code:focus {
+    border-color: #a5c443;
     box-shadow: 0 0 5px rgba(201, 221, 86, 0.7);
     transform: scale(1.02);
 }
@@ -173,4 +150,31 @@ button[type="submit"]:hover {
     100% {
         transform: rotate(360deg);
     }
+}
+
+/* Remove default focus styles for datalist input */
+input[list]:focus {
+    outline: none;
+}
+
+/* Consistent styling for datalist input */
+input[list] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Style the datalist options */
+datalist option {
+    font-size: 1rem;
+    padding: 0.5rem;
+    background-color: white;
+    color: #333;
+}
+
+/* Adjust spacing for radio buttons and text alignment */
+.radio-group label input[type="radio"],
+.radio-group label input[type="checkbox"] {
+    margin-right: 0.5rem;
+    vertical-align: middle;
 }

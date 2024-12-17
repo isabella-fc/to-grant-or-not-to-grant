@@ -43,9 +43,22 @@ class ModelForm(forms.Form):
 
     # Text input fields
     district_name = forms.CharField(label='District Name', max_length=50)
-    medical_fee_region = forms.CharField(label='Medical Fee Region', max_length=50)
+    medical_fee_region = forms.ChoiceField(
+        label='Medical Fee Region',
+        choices=[
+            (False, 'Region I'),
+            (False, 'Region II'),
+            (False, 'Region III'),
+            (True, 'Region IV'),
+            (False, 'Other'),
+        ]
+    )
     carrier_name = forms.CharField(label='Carrier Name', max_length=50)
-    county_of_injury = forms.CharField(label='County of Injury', max_length=50)
+    county_of_injury = forms.ChoiceField(
+        label='County of Injury',
+        choices=[(county['county'].upper(), county['county'])
+                 for county in NYZipCode.objects.values('county').distinct()]
+    )
     industry_code = forms.CharField(label='Industry Code', max_length=10)
     wcio_cause_of_injury_code = forms.CharField(label='WCIO Cause of Injury Code', max_length=10)
     wcio_nature_of_injury_code = forms.CharField(label='WCIO Nature of Injury Code', max_length=10)

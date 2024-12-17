@@ -26,3 +26,5 @@ class NYZipCode(models.Model):
 
     def __str__(self):
         return f"{self.zip_code} ({self.county})"
+
+

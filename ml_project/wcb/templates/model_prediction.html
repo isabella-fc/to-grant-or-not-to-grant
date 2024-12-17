@@ -82,22 +82,14 @@
                         {{ form.ime4_count.label_tag }} {{ form.ime4_count }}
                     </div>
                 </div>
-                <div class="form-row">
+                <div class="form-row radio-group-inline">
                     <div class="radio-group">
-                        <label>
-                            <input type="radio" name="attorney_representative" value="True"> True
-                        </label>
-                        <label>
-                            <input type="radio" name="attorney_representative" value="False"> False
-                        </label>
+                        {{ form.attorney_representative.label_tag }}
+                        {{ form.attorney_representative }}
                     </div>
                     <div class="radio-group">
-                        <label>
-                            <input type="radio" name="covid_indicator" value="True"> True
-                        </label>
-                        <label>
-                            <input type="radio" name="covid_indicator" value="False"> False
-                        </label>
+                        {{ form.covid_indicator.label_tag }}
+                        {{ form.covid_indicator }}
                     </div>
                 </div>
             </fieldset>
