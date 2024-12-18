@@ -1,5 +1,42 @@
 {% extends 'base/base.html' %}
+{% load static %}
 
 {% block content %}
-{% include 'base/navbar.html' %}
+    <head>
+        <title>Home</title>
+        <link href="{% static 'css/index.css' %}" rel="stylesheet" media="screen">
+    </head>
+    {% include 'base/navbar.html' %}
+
+    <div class="homepage-container">
+        <div class="homepage-left">
+            <h1>To Grant or not to Grant</h1>
+            <h2>Deciding on Compensation Benefits</h2>
+            <p>
+                This website showcases our machine learning model developed for the Workers' Compensation Board (WCB).
+                Our tool allows workers to fill out a form to predict the type of claim injury and collects data to
+                improve predictions.
+            </p>
+            <h2>Project Details</h2>
+            <ul>
+                <li><strong>Project Title:</strong> To Grant or Not To Grant: Deciding on Compensation Benefits</li>
+                <li><strong>Group:</strong> 36 - Machine Learning 2024/2025 - Nova IMS</li>
+            </ul>
+            <h3>Group Members</h3>
+            <p>
+                <span>Daan Holten</span><br>
+                <span>Inês Major</span><br>
+                <span>Isabella Costa</span><br>
+                <span>Philippe Dutranoit</span><br>
+                <span>Tim Straub</span>
+
+            </p>
+            <a class="github-link" href="https://github.com/your-project-link" target="_blank">
+                <i class="fa-brands fa-github"></i> View on GitHub
+            </a>
+        </div>
+        <div class="homepage-right">
+            <img src="{% static 'images/undraw_detailed-analysis_w5a8.svg' %}" alt="Detailed Analysis Illustration">
+        </div>
+    </div>
 {% endblock %}

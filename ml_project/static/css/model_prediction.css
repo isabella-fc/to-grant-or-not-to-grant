@@ -1,15 +1,91 @@
-/* Apply Inter font */
+/* General Body Styling */
 body {
     font-family: 'Inter', sans-serif;
+    background-color: #fcfcfc;
     margin: 0;
-    padding: 0;
+    padding-top: 80px;
 }
+
+/* Navbar Styling */
+.custom-navbar {
+    background-color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 70px;
+}
+
+/* Navbar Container */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Navbar Brand */
+.navbar-brand {
+    font-size: 1.2rem;
+    color: #151414;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+/* Navbar Divider */
+.navbar-divider {
+    background-color: #151414;
+    width: 2px;
+    height: 40px;
+    margin: 0 1.5rem;
+}
+
+/* Navbar Links */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #151414;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: #c9dd56 !important;
+    font-weight: bold;
+}
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .custom-navbar {
+        height: auto;
+        padding: 1rem;
+    }
+}
+
 
 /* Container styles for spacing */
 .container {
     display: flex;
     flex-direction: column;
-    gap: 2rem; /* Space between sections */
+    gap: 2rem;
+    margin-top: 1rem;
 }
 
 /* Fieldset styling */
@@ -31,14 +107,14 @@ fieldset .form-row,
 fieldset .form-row-nested {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem 2rem; /* Adjusted spacing for consistent rows */
+    gap: 1rem 2rem;
     margin-bottom: 1rem;
-    align-items: flex-start; /* Align all items to the top edge */
+    align-items: flex-start;
 }
 
 fieldset .form-row > div,
 fieldset .form-row-nested > div {
-    flex: 1 1 calc(33.333% - 2rem); /* Three fields per row with equal spacing */
+    flex: 1 1 calc(33.333% - 2rem);
     display: flex;
     flex-direction: column;
 }
@@ -53,27 +129,27 @@ label {
 /* Radio button groups in the same row */
 .radio-group-inline {
     display: flex;
-    gap: 1.5rem; /* Spacing between radio button groups */
+    gap: 1.5rem;
     align-items: flex-start;
 }
 
 .radio-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem; /* Space between radio options */
+    gap: 0.5rem;
 }
 
 .radio-group label {
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Space between radio button and text */
+    gap: 0.5rem;
     margin: 0;
 }
 
 /* General Input and Select Styling */
 input, select {
     width: 100%;
-    max-width: 350px; /* Standard size for consistency */
+    max-width: 350px;
     padding: 0.7rem;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -84,7 +160,7 @@ input, select {
     transition: all 0.2s ease-in-out;
 }
 
-/* Zip Code Field: Same Styling */
+/* Zip Code Field */
 #id_zip_code, #id_carrier_name {
     max-width: 350px;
     flex: 1 1 calc(40% - 1.5rem);
@@ -157,14 +233,12 @@ input[list]:focus {
     outline: none;
 }
 
-/* Consistent styling for datalist input */
 input[list] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 }
 
-/* Style the datalist options */
 datalist option {
     font-size: 1rem;
     padding: 0.5rem;
@@ -172,26 +246,17 @@ datalist option {
     color: #333;
 }
 
-/* Adjust spacing for radio buttons and text alignment */
-.radio-group label input[type="radio"],
-.radio-group label input[type="checkbox"] {
-    margin-right: 0.5rem;
-    vertical-align: middle;
-}
-
-
-/* Custom Radio Button Styling */
+/* Radio Button Styling */
 input[type="radio"] {
-    appearance: none; /* Remove default square focus effect */
+    appearance: none;
     width: 1rem;
     height: 1.2rem;
     border: 2px solid #ccc;
-    border-radius: 50%; /* Make it circular */
+    border-radius: 50%;
     outline: none;
     transition: all 0.2s ease-in-out;
 }
 
-/* Style radio button on focus and checked */
 input[type="radio"]:focus {
     border-color: #c9dd56;
     box-shadow: 0 0 5px rgba(201, 221, 86, 0.7);
@@ -203,7 +268,6 @@ input[type="radio"]:checked {
     box-shadow: 0 0 5px rgba(201, 221, 86, 0.7);
 }
 
-/* Inner dot for checked radio button */
 input[type="radio"]:checked::before {
     content: '';
     display: block;
@@ -213,4 +277,3 @@ input[type="radio"]:checked::before {
     background-color: white;
     border-radius: 50%;
 }
-

@@ -1,0 +1,153 @@
+/* General Body Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fcfcfc;
+    margin: 0;
+    padding-top: 80px;
+}
+
+/* Navbar Styling */
+.custom-navbar {
+    background-color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 70px;
+}
+
+/* Navbar Container */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Navbar Brand */
+.navbar-brand {
+    font-size: 1.2rem;
+    color: #151414;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+/* Navbar Divider */
+.navbar-divider {
+    background-color: #151414;
+    width: 2px;
+    height: 40px;
+    margin: 0 1.5rem;
+}
+
+/* Navbar Links */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #151414;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: #c9dd56 !important;
+    font-weight: bold;
+}
+
+.homepage-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    padding: 0 2rem;
+    gap: 2rem;
+}
+
+.homepage-left,
+.homepage-right {
+    flex: 1;
+    max-width: 50%;
+}
+
+.homepage-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    max-width: 500px;
+    margin-right: 50px;
+}
+
+.homepage-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homepage-right img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.homepage-left h1 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+}
+
+.homepage-left h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #34495e;
+}
+
+.homepage-left h3 {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.homepage-left p {
+    font-size: 1rem;
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    padding: 0.7rem 1.5rem;
+    color: #fff;
+    background-color: #c9dd56;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    gap: 0.5rem;
+}
+
+.github-link i {
+    font-size: 1.2rem;
+}
+
+.github-link:hover {
+    background-color: #b3c945;
+}

@@ -1,13 +1,19 @@
-<nav class="navbar navbar-expand-md bg-body-tertiary">
-  <div class="container">
+<nav class="navbar navbar-expand-md navbar-light fixed-top custom-navbar">
+  <div class="navbar-container">
+    <!-- Navbar Brand and Divider -->
     <a class="navbar-brand" href="#">Machine Learning Group 36</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+    <div class="navbar-divider"></div>
+    
+    <!-- Nav Links -->
+    <div class="navbar-links">
+      <ul class="navbar-nav mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" 
+             href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'model_prediction' %}">Multiclass Prediction</a>
+          <a class="nav-link {% if request.resolver_match.url_name == 'model_prediction' %}active{% endif %}" 
+             href="{% url 'model_prediction' %}">Multiclass Prediction</a>
         </li>
       </ul>
     </div>
