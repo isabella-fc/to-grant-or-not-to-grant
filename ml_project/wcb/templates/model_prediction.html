@@ -12,8 +12,9 @@
     </head>
     {% include 'base/navbar.html' %}
     <body>
-    <div class="container my-5">
 
+    <div class="container my-5">
+        <h2>Provide the injury claim details in the form below to receive a prediction for the claim type.</h2>
         <!-- Form Fields -->
         <form method="post" id="prediction-form">
             {% csrf_token %}
@@ -142,13 +143,13 @@
         {% endif %}
     </div>
     <footer class="footer">
-    <div class="footer-content">
-        <p>&copy; 2024 Group 36 - Machine Learning 2024/2025, NOVA IMS</p>
-        <p>Developed as part of the Workers’ Compensation Board automation project.</p>
-        <a href="https://github.com/isabella-fc/to-grant-or-not-to-grant" target="_blank" class="footer-link">
-            <i class="fa-brands fa-github"></i> View GitHub Repository
-        </a>
-    </div>
-</footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Group 36 - Machine Learning 2024/2025, NOVA IMS</p>
+            <p>Developed as part of the Workers’ Compensation Board automation project.</p>
+            <a href="https://github.com/isabella-fc/to-grant-or-not-to-grant" target="_blank" class="footer-link">
+                <i class="fa-brands fa-github"></i> View GitHub Repository
+            </a>
+        </div>
+    </footer>
     </body>
 {% endblock %}

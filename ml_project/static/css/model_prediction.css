@@ -2,7 +2,7 @@
 body {
     font-family: 'Inter', sans-serif;
     background-color: #fcfcfc;
-    margin: 0;
+    margin-top: 30px;
     padding-top: 80px;
 }
 
@@ -306,4 +306,10 @@ input[type="radio"]:checked::before {
 .footer-link i {
     margin-right: 5px; /* Space between icon and text */
     color: inherit;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #34495e;
 }
