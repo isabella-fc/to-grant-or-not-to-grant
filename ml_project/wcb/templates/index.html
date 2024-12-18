@@ -5,6 +5,10 @@
     <head>
         <title>Home</title>
         <link href="{% static 'css/index.css' %}" rel="stylesheet" media="screen">
+     <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    >
     </head>
     {% include 'base/navbar.html' %}
 
@@ -18,10 +22,8 @@
                 improve predictions.
             </p>
             <h2>Project Details</h2>
-            <ul>
-                <li><strong>Project Title:</strong> To Grant or Not To Grant: Deciding on Compensation Benefits</li>
-                <li><strong>Group:</strong> 36 - Machine Learning 2024/2025 - Nova IMS</li>
-            </ul>
+                <p><strong>Project Title:</strong> To Grant or Not To Grant: Deciding on Compensation Benefits</p>
+                <p><strong>Group:</strong> 36 - Machine Learning 2024/2025 - Nova IMS</p>
             <h3>Group Members</h3>
             <p>
                 <span>Daan Holten</span><br>
@@ -31,6 +33,7 @@
                 <span>Tim Straub</span>
 
             </p>
+            <a class="model-button" href="{% url 'model_prediction' %}">Try Model</a>
             <a class="github-link" href="https://github.com/your-project-link" target="_blank">
                 <i class="fa-brands fa-github"></i> View on GitHub
             </a>
