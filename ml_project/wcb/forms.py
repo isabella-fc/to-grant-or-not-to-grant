@@ -15,12 +15,12 @@ class ModelForm(forms.Form):
     # Boolean fields
     attorney_representative = forms.ChoiceField(
         label='Attorney/Representative',
-        choices=[(True, 'True'), (False, 'False')],
+        choices=[(True, 'Yes'), (False, 'No')],
         widget=forms.RadioSelect
     )
     covid_indicator = forms.ChoiceField(
         label='COVID-19 Indicator',
-        choices=[(True, 'True'), (False, 'False')],
+        choices=[(True, 'Yes'), (False, 'No')],
         widget=forms.RadioSelect
     )
     c3_form_submitted = forms.ChoiceField(
