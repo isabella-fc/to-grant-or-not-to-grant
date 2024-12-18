@@ -16,6 +16,7 @@ import numpy as np
 
 
 def preprocess_form(form_data):
+    print(form_data)
     """
     Preprocess form.cleaned_data for XGBoost prediction:
     - Converts all string inputs into appropriate numeric types.

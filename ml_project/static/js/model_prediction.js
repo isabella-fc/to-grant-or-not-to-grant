@@ -81,7 +81,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (matchedOption) {
             console.log("Matched Carrier:", matchedOption.value);
             console.log("Encoded Value:", matchedOption.dataset.encodedValue);
-            encodedField.value = matchedOption.dataset.encodedValue; // Correct dataset reference
+            encodedField.value = matchedOption.dataset.encodedValue;
         }
     });
 });
+
+document.getElementById('clear-button').addEventListener('click', function() {
+        const form = document.getElementById('prediction-form');
+        form.reset();
+    });

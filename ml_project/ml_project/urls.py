@@ -29,7 +29,7 @@ urlpatterns = [
 
     path('', views.home, name='home'),
     path('multiclass-prediction/', views.model_prediction, name='model_prediction'),
-    path('feature_importance/', views.feature_importance, name='feature_importance'),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

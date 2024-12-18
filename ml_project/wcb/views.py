@@ -39,33 +39,12 @@ def model_prediction(request):
             prediction = loaded_model.predict(model_features)
             prediction_name = decode_prediction(prediction)
 
-            # Generate feature importance plot
-            importance = loaded_model.feature_importances_
-            features = [
-                'Age at Injury',
-                'Average Weekly Wage',
-                'IME-4 Count',
-                'Number of Dependents',
-                'Attorney Representative',
-                'COVID Indicator',
-                'Carrier Type',
-                'District Name',
-                'Gender',
-                'Medical Fee Region',
-                'Birth Year',
-                'Carrier Name',
-                'County of Injury',
-                'Industry Code',
-                'WCIO Cause of Injury Code',
-                'WCIO Nature of Injury Code',
-                'WCIO Part of Body Code',
-                'Zip Code'
-            ]
-
             return render(request, 'model_prediction.html', {
-                'form': form,
+                'form': ModelForm(),
                 'prediction': prediction_name,
                 'feature_importance_plot': feature_importance_path,
+                'zip_codes': zip_codes,
+                'carrier_names': carrier_names,
             })
 
     else:
