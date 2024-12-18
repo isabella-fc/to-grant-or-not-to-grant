@@ -137,7 +137,10 @@ def preprocess_form(form_data):
 
     # Drop unexpected columns
     processed_df = processed_df[[col for col in FEATURE_ORDER if col in processed_df.columns]]
-    processed_df.replace(0, np.nan)
+
+    # Replace 0 with NaN selectively
+    columns_to_replace = [col for col in processed_df.columns if 'Average Weekly Wage' not in col and '_' not in col]
+    processed_df[columns_to_replace] = processed_df[columns_to_replace].replace(0, np.nan)
 
     return processed_df
 
