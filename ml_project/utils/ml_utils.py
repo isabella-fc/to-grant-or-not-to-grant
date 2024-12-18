@@ -2,7 +2,6 @@ import os
 import pickle
 from django.conf import settings
 
-
 from utils.lists import FEATURE_ORDER, COUNTIES, INDUSTRY_CODES, CAUSE_OF_INJURY_CODES, NATURE_OF_INJURY_CODES, \
     PART_OF_BODY_CODES
 
@@ -24,9 +23,7 @@ def preprocess_form(form_data):
     - Ensures strict column order according to FEATURE_ORDER.
     """
 
-    # Helper functions
-    def parse_boolean(value):
-        return 1 if str(value).lower() == 'true' else 0 if str(value).lower() == 'false' else np.nan
+    numeric_features = ['Age at Injury', 'Average Weekly Wage', 'Birth Year', 'IME-4 Count', 'Number of Dependents']
 
     # Initialize processed_data with default values (0 or np.nan)
     processed_data = {feature: 0 for feature in FEATURE_ORDER}
@@ -138,9 +135,27 @@ def preprocess_form(form_data):
     # Drop unexpected columns
     processed_df = processed_df[[col for col in FEATURE_ORDER if col in processed_df.columns]]
 
+    # Open Robust Scaler
+    with (open(os.path.join(settings.BASE_DIR, 'ml_project', 'ml_model', 'scaler.pkl'), 'rb')
+          as scaler_file):
+        scaler = pickle.load(scaler_file)
+
+    df_numeric = processed_df[numeric_features]
+
+    # Apply scaling
+    scaled_features = scaler.transform(df_numeric)
+
+    # Replace scaled features in the original DataFrame
+    scaled_df = pd.DataFrame(scaled_features, columns=numeric_features, index=processed_df.index)
+    processed_df.update(scaled_df)
+
+    processed_df[numeric_features] = processed_df[numeric_features].astype(float)
+
     # Replace 0 with NaN selectively
-    columns_to_replace = [col for col in processed_df.columns if 'Average Weekly Wage' not in col and '_' not in col]
-    processed_df[columns_to_replace] = processed_df[columns_to_replace].replace(0, np.nan)
+    columns_to_replace = [
+        col for col in processed_df.select_dtypes(include=['int', 'float']).columns
+        if '_' not in col
+    ]
 
     return processed_df
 
