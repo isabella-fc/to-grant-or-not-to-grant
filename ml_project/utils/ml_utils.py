@@ -3,12 +3,17 @@ import pickle
 from django.conf import settings
 
 
-from utils.lists import FEATURE_ORDER, COUNTIES
+from utils.lists import FEATURE_ORDER, COUNTIES, INDUSTRY_CODES, CAUSE_OF_INJURY_CODES, NATURE_OF_INJURY_CODES, \
+    PART_OF_BODY_CODES
 
 import pandas as pd
 import numpy as np
 
 from datetime import datetime
+
+import pandas as pd
+import numpy as np
+
 
 def preprocess_form(form_data):
     """
@@ -17,49 +22,43 @@ def preprocess_form(form_data):
     - Converts categorical variables into numerical values.
     - Ensures strict column order according to FEATURE_ORDER.
     """
+
     # Helper functions
     def parse_boolean(value):
         return 1 if str(value).lower() == 'true' else 0 if str(value).lower() == 'false' else np.nan
-
-    def parse_date(value):
-        try:
-            return datetime.strptime(value, "%Y-%m-%d")
-        except (ValueError, TypeError):
-            return None
 
     # Initialize processed_data with default values (0 or np.nan)
     processed_data = {feature: 0 for feature in FEATURE_ORDER}
 
     # Numeric fields
-    numeric_fields = ['age_at_injury', 'average_weekly_wage', 'birth_year', 'ime4_count', 'number_of_dependents']
-    for field in numeric_fields:
-        processed_data[field.replace('_', ' ').title()] = float(form_data.get(field, 0))
+    processed_data['Age at Injury'] = form_data.get('age_at_injury', np.nan)
+    processed_data['Average Weekly Wage'] = float(form_data.get('average_weekly_wage', np.nan))
+    processed_data['Birth Year'] = form_data.get('birth_year', np.nan)
+    ime4count = form_data.get('ime4_count', 0)
+    processed_data['IME-4 Count'] = ime4count != 0
+    processed_data['Number of Dependents'] = form_data.get('number_of_dependents', 0)
 
     # Date fields
-    date_fields = {
-        'accident_date': 'Accident Date',
-        'assembly_date': 'Assembly Date',
-        'c2_date': 'C-2 Date'
-    }
-    for key, prefix in date_fields.items():
-        date_value = parse_date(form_data.get(key, ""))
-        if date_value:
-            processed_data[f'{prefix}_Year'] = date_value.year
-            processed_data[f'{prefix}_Month'] = date_value.month
-            processed_data[f'{prefix}_Day'] = date_value.day
-            processed_data[f'{prefix}_DayOfWeek'] = date_value.weekday()
+    for field, prefix in {
+        'accident_date': 'Accident Date_',
+        'c2_date': 'C-2 Date_',
+        'assembly_date': 'Assembly Date_',
+    }.items():
+        date_value = form_data.get(field, None)
+        print(f"Processing date field: {field}, Value: {date_value}, Type: {type(date_value)}")  # Debugging
+        processed_data = add_datetime_features(processed_data, date_value, prefix)
 
     # Boolean fields
     boolean_fields = {
-        'attorney_representative': 'Attorney/Representative',
         'covid_indicator': 'COVID-19 Indicator',
-        'c3_form_submitted': 'C3 Form Submitted',
-        'first_hearing_date': 'First Hearing Date',
-        'alternative_dispute_resolution': 'Alternative Dispute Resolution',
-        'medical_fee_region': 'Medical Fee Region'
+        'c3_form_submitted': 'Has C-3 Date',
+        'first_hearing_date': 'Has First Hearing Date',
     }
+
+    # Process boolean fields (idk why)
     for key, prefix in boolean_fields.items():
-        processed_data[prefix] = parse_boolean(form_data.get(key))
+        field_value = form_data.get(key)
+        processed_data = add_boolean_one_hot(processed_data, field_value, prefix)
 
     # Carrier Type mapping
     carrier_types = [
@@ -76,18 +75,58 @@ def preprocess_form(form_data):
     for g in gender_mapping:
         processed_data[f'Gender_{g}'] = int(gender == g)
 
+    # Alternative dispute resolution mapping
+    adr_options = {'False': 'N', 'True': 'Y', 'None': 'U'}
+    for key, value in adr_options.items():
+        processed_data[f'Alternative Dispute Resolution_{value}'] = int(
+            form_data.get('alternative_dispute_resolution', 'U') == key)
+
+    # representative and attorney mapping
+    attorney_options = {'False': 'N', 'True': 'Y', }
+    for key, value in attorney_options.items():
+        processed_data[f'Attorney/Representative_{value}'] = int(
+            form_data.get('attorney_representative', 'False') == key)
+
+    # covid 19 indicator
+    covid_options = {'False': 'N', 'True': 'Y', }
+    for key, value in covid_options.items():
+        processed_data[f'COVID-19 Indicator_{value}'] = int(form_data.get('covid_indicator', 'False') == key)
+
+    medical_options = ['Medical Fee Region_I', "Medical Fee Region_II", "Medical Fee Region_III",
+                       "Medical Fee Region_IV""Medical Fee Region_UK"]
+    for option in medical_options:
+        processed_data[option] = int(form_data.get('medical_fee_region', 'Medical Fee Region_UK') == option)
+
     # County mapping
-    all_counties = ['ALBANY', 'BRONX', 'BROOME', 'DELAWARE', 'KINGS', 'UNKNOWN']  # Add all counties here
-    county = form_data.get('county_of_injury', 'UNKNOWN')
-    for c in all_counties:
-        processed_data[f'County of Injury_{c}'] = int(county == c)
+    processed_data = match_one_hot_encoding(
+        processed_data, COUNTIES, form_data.get('county_of_injury', 'UNKNOWN'), 'County of Injury_'
+    )
 
-    # Text fields as placeholders
-    text_fields = ['industry_code',
-                   'wcio_cause_of_injury_code', 'wcio_nature_of_injury_code', 'wcio_part_of_body_code']
-    for field in text_fields:
-        processed_data[field.title().replace('_', ' ')] = int(form_data.get(field, 0))
+    processed_data = match_one_hot_encoding(
+        processed_data, INDUSTRY_CODES, form_data.get('industry_code', 'UNKNOWN'), 'Industry Code_',
+        float_conversion=True
+    )
 
+    processed_data = match_one_hot_encoding(
+        processed_data, CAUSE_OF_INJURY_CODES, form_data.get('wcio_cause_of_injury_code', 'UNKNOWN'),
+        'WCIO Cause of Injury Code_', float_conversion=True
+    )
+
+    processed_data = match_one_hot_encoding(
+        processed_data, NATURE_OF_INJURY_CODES, form_data.get('wcio_nature_of_injury_code', 'UNKNOWN'),
+        'WCIO Nature of Injury Code_', float_conversion=True
+    )
+
+    processed_data = match_one_hot_encoding(
+        processed_data, PART_OF_BODY_CODES, form_data.get('wcio_part_of_body_code', 'UNKNOWN'),
+        'WCIO Part Of Body Code_', float_conversion=True
+    )
+
+    district_options = ['District Name_ALBANY', 'District Name_BINGHAMTON', 'District Name_BUFFALO',
+                        'District Name_HAUPPAUGE', 'District Name_NYC', 'District Name_ROCHESTER',
+                        'District Name_STATEWIDE', 'District Name_SYRACUSE', ]
+    processed_data = match_one_hot_encoding(processed_data, district_options, form_data.get('district_name', 'UNKNOWN'),
+                                            'District Name_')
 
     processed_data['Carrier Name'] = float(form_data.get('encoded_value_carrier', 0))
     processed_data['Zip Code'] = float(form_data.get('encoded_value', 0))
@@ -97,8 +136,78 @@ def preprocess_form(form_data):
 
     # Drop unexpected columns
     processed_df = processed_df[[col for col in FEATURE_ORDER if col in processed_df.columns]]
+    processed_df.replace(0, np.nan)
 
     return processed_df
+
+
+def match_one_hot_encoding(df, features, value, prefix, float_conversion=False):
+    """
+    Matches the first value in a one-hot encoded feature set
+    Leaves the rest 0
+    """
+    if float_conversion:
+        value = float(value)
+
+    for feature in features:
+        # Check if the feature starts with the given prefix
+        if feature.startswith(prefix):
+            # Set the column to 1 if it matches the target value, otherwise 0
+            df[feature] = 1 if feature == f"{prefix}{value}" else 0
+
+    return df
+
+
+def add_datetime_features(df, date_value, prefix):
+    """
+    Adds year, month, day, and day of the week features for a given date to the DataFrame.
+
+    Args:
+        df (dict): The dictionary to update with new features.
+        date_value (datetime.date or str): The date value to extract features from.
+        prefix (str): The prefix for the new feature names.
+
+    Returns:
+        dict: The updated dictionary with the new date-related features.
+    """
+    # Convert the date_value to pandas datetime if it's not None
+    date_value = pd.to_datetime(date_value, errors='coerce')  # Handles None and invalid dates
+    if pd.notnull(date_value):
+        df[f'{prefix}Year'] = date_value.year
+        df[f'{prefix}Month'] = date_value.month
+        df[f'{prefix}Day'] = date_value.day
+        df[f'{prefix}DayOfWeek'] = date_value.dayofweek
+    else:
+        # Assign NaN if the date is missing or invalid
+        df[f'{prefix}Year'] = np.nan
+        df[f'{prefix}Month'] = np.nan
+        df[f'{prefix}Day'] = np.nan
+        df[f'{prefix}DayOfWeek'] = np.nan
+
+    return df
+
+
+def add_boolean_one_hot(df, field_value, prefix):
+    """
+    Adds one-hot encoded columns for a boolean field to the DataFrame.
+
+    Args:
+        df (dict): The dictionary to update with new features.
+        field_value (str or bool): The field value ('True', 'False', or equivalent).
+        prefix (str): The prefix for the new one-hot encoded column names.
+
+    Returns:
+        dict: The updated dictionary with one-hot encoded columns.
+    """
+    # Parse the field value to determine boolean state
+    parsed_value = 1 if str(field_value).lower() == 'true' else 0
+
+    # Add one-hot encoded columns
+    df[f'{prefix}_1'] = parsed_value
+    df[f'{prefix}_0'] = 1 - parsed_value
+
+    return df
+
 
 def decode_prediction(prediction):
     """

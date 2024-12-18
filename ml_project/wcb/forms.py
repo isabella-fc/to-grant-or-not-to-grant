@@ -81,11 +81,11 @@ class ModelForm(forms.Form):
     medical_fee_region = forms.ChoiceField(
         label='Medical Fee Region',
         choices=[
-            (False, 'Region I'),
-            (False, 'Region II'),
-            (False, 'Region III'),
-            (True, 'Region IV'),
-            (False, 'Other'),
+            ('Medical Fee Region_I', 'Region I'),
+            ('Medical Fee Region_II', 'Region II'),
+            ('Medical Fee Region_III', 'Region III'),
+            ('Medical Fee Region_IV', 'Region IV'),
+            ('Medical Fee Region_UK', 'Other'),
         ]
     )
 

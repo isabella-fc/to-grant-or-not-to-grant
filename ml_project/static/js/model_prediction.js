@@ -79,6 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Find the matching option and set the encoded value
         const matchedOption = Array.from(dataListOptions).find(option => option.value === selectedValue);
         if (matchedOption) {
+            console.log("Matched Carrier:", matchedOption.value);
+            console.log("Encoded Value:", matchedOption.dataset.encodedValue);
             encodedField.value = matchedOption.dataset.encodedValue; // Correct dataset reference
         }
     });
