@@ -5,7 +5,7 @@ from django.shortcuts import render
 from .forms import ModelForm
 from utils.ml_utils import *
 import pickle
-from wcb.models import NYZipCode, CarrierName
+from wcb.models import NYZipCode, CarrierName, ClaimPrediction
 
 MODEL_PATH = os.path.join(settings.BASE_DIR, 'ml_project', 'ml_model', 'final_model.pkl')
 
@@ -31,13 +31,46 @@ def model_prediction(request):
             with open(MODEL_PATH, 'rb') as model_file:
                 loaded_model = pickle.load(model_file)
 
+            form_data = form.cleaned_data
+            run_time = datetime.now()
+
             # Make prediction
             # Prepare model features from form data
-            model_features = preprocess_form(form.cleaned_data)
+            model_features = preprocess_form(form_data)
 
             # Make prediction
             prediction = loaded_model.predict(model_features)
             prediction_name = decode_prediction(prediction)
+
+            # Save prediction to database
+            ClaimPrediction.objects.create(
+                accident_date=form_data.get('accident_date'),
+                c2_date=form_data.get('c2_date'),
+                age_at_injury=form_data.get('age_at_injury'),
+                assembly_date=form_data.get('assembly_date'),
+                average_weekly_wage=form_data.get('average_weekly_wage'),
+                birth_year=form_data.get('birth_year'),
+                ime4_count=form_data.get('ime4_count'),
+                number_of_dependents=form_data.get('number_of_dependents'),
+                attorney_representative=form_data.get('attorney_representative'),
+                covid_indicator=form_data.get('covid_indicator'),
+                c3_form_submitted=form_data.get('c3_form_submitted'),
+                first_hearing_date=form_data.get('first_hearing_date'),
+                alternative_dispute_resolution=form_data.get('alternative_dispute_resolution'),
+                carrier_type=form_data.get('carrier_type'),
+                gender=form_data.get('gender'),
+                district_name=form_data.get('district_name'),
+                medical_fee_region=form_data.get('medical_fee_region'),
+                county_of_injury=form_data.get('county_of_injury'),
+                industry_code=form_data.get('industry_code'),
+                wcio_cause_of_injury_code=form_data.get('wcio_cause_of_injury_code'),
+                wcio_nature_of_injury_code=form_data.get('wcio_nature_of_injury_code'),
+                wcio_part_of_body_code=form_data.get('wcio_part_of_body_code'),
+                zip_code=form_data.get('zip_code'),
+                carrier_name=form_data.get('carrier_name'),
+                claim_injury_type=prediction_name,
+                run_time=run_time
+            )
 
             return render(request, 'model_prediction.html', {
                 'form': ModelForm(),

@@ -2,23 +2,36 @@ from django.db import models
 from django.utils import timezone
 # Create your models here.
 
-class Predictions(models.Model):
-    # The possible predictions the model can make in the 'predictions' field
-    # defined by: (<database name>, <human readible name>)
-    PREDICT_OPTIONS = [
-        ('setosa', 'Setosa'),
-        ('versicolor', 'Versicolor'),
-        ('virginica', 'Virginica')
-    ]
+class ClaimPrediction(models.Model):
+    accident_date = models.DateField()
+    c2_date = models.DateField()
+    age_at_injury = models.IntegerField()
+    assembly_date = models.DateField()
+    average_weekly_wage = models.CharField(max_length=20)
+    birth_year = models.IntegerField()
+    ime4_count = models.IntegerField()
+    number_of_dependents = models.IntegerField()
+    attorney_representative = models.BooleanField()
+    covid_indicator = models.BooleanField()
+    c3_form_submitted = models.BooleanField()
+    first_hearing_date = models.BooleanField()
+    alternative_dispute_resolution = models.BooleanField()
+    carrier_type = models.CharField(max_length=100)
+    gender = models.CharField(max_length=1)
+    district_name = models.CharField(max_length=100)
+    medical_fee_region = models.CharField(max_length=100)
+    county_of_injury = models.CharField(max_length=100)
+    industry_code = models.CharField(max_length=10)
+    wcio_cause_of_injury_code = models.CharField(max_length=10)
+    wcio_nature_of_injury_code = models.CharField(max_length=10)
+    wcio_part_of_body_code = models.CharField(max_length=10)
+    zip_code = models.CharField(max_length=10)
+    carrier_name = models.CharField(max_length=200)
+    claim_injury_type = models.CharField(max_length=200)
+    run_time = models.DateTimeField(auto_now_add=True)
 
-    # Prediction table fields (or columns) are defined by creating attributes
-    # and assigning them to field instances such as models.CharField()
-    predict_datetime = models.DateTimeField(default=timezone.now)
-    sepal_length = models.DecimalField(decimal_places=2, max_digits=3)
-    sepal_width = models.DecimalField(decimal_places=2, max_digits=3)
-    petal_length = models.DecimalField(decimal_places=2, max_digits=3)
-    petal_width = models.DecimalField(decimal_places=2, max_digits=3)
-    prediction = models.CharField(choices=PREDICT_OPTIONS, max_length=10)
+    def __str__(self):
+        return f"Claim Prediction ({self.id})"
 
 class NYZipCode(models.Model):
     zip_code = models.CharField(max_length=5, unique=True)
