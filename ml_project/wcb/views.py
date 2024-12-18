@@ -31,8 +31,22 @@ def model_prediction(request):
             with open(MODEL_PATH, 'rb') as model_file:
                 loaded_model = pickle.load(model_file)
 
+
             form_data = form.cleaned_data
             run_time = datetime.now()
+
+            zip_code = form_data.get('zip_code')
+            carrier_name = form_data.get('carrier_name')
+
+            # Get encoded values from the database
+            zip_encoded_value = NYZipCode.objects.filter(zip_code=zip_code).values_list('encoded_value',
+                                                                                        flat=True).first()
+            carrier_encoded_value = CarrierName.objects.filter(carrier_name=carrier_name).values_list('encoded_value',
+                                                                                                      flat=True).first()
+
+            # Add encoded values to form data
+            form_data['encoded_value'] = zip_encoded_value if zip_encoded_value is not None else 0.0
+            form_data['encoded_value_carrier'] = carrier_encoded_value if carrier_encoded_value is not None else 0.0
 
             # Make prediction
             # Prepare model features from form data
