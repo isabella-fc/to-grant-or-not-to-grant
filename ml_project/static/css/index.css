@@ -183,3 +183,33 @@ a {
 .github-link:hover i {
     color: #fff; /* White icon on hover */
 }
+
+.footer {
+    background-color: #f8f9fa; /* Light background to contrast the body */
+    padding: 20px 10px;
+    text-align: center;
+    border-top: 2px solid #c9dd56; /* Matches the primary color */
+    margin-top: 100px;
+}
+
+.footer-content {
+    font-size: 0.9rem;
+    color: #3b3e3f; /* Matches text color on the page */
+    line-height: 1.6;
+}
+
+.footer-link {
+    color: #c9dd56;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #b3c945; /* Slightly darker green for hover effect */
+}
+
+.footer-link i {
+    margin-right: 5px; /* Space between icon and text */
+    color: inherit;
+}

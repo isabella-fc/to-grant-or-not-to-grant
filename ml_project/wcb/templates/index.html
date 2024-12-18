@@ -5,10 +5,10 @@
     <head>
         <title>Home</title>
         <link href="{% static 'css/index.css' %}" rel="stylesheet" media="screen">
-     <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    >
+        <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        >
     </head>
     {% include 'base/navbar.html' %}
 
@@ -17,13 +17,11 @@
             <h1>To Grant or not to Grant</h1>
             <h2>Deciding on Compensation Benefits</h2>
             <p>
-                This website showcases our machine learning model developed for the Workers' Compensation Board (WCB).
-                Our tool allows workers to fill out a form to predict the type of claim injury and collects data to
-                improve predictions.
+                This platform showcases our machine learning model, developed to assist the New York Workers’
+                Compensation Board (WCB) in automating claim processing. It allows users to predict claim injury types,
+                streamlining decisions and improving the overall process for WCB's staff.
             </p>
-            <h2>Project Details</h2>
-                <p><strong>Project Title:</strong> To Grant or Not To Grant: Deciding on Compensation Benefits</p>
-                <p><strong>Group:</strong> 36 - Machine Learning 2024/2025 - Nova IMS</p>
+            <h2>Group 36 - Machine Learning 2024/2025 - NOVA IMS</h2>
             <h3>Group Members</h3>
             <p>
                 <span>Daan Holten</span><br>
@@ -42,4 +40,13 @@
             <img src="{% static 'images/undraw_detailed-analysis_w5a8.svg' %}" alt="Detailed Analysis Illustration">
         </div>
     </div>
+    <footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2024 Group 36 - Machine Learning 2024/2025, NOVA IMS</p>
+        <p>Developed as part of the Workers’ Compensation Board automation project.</p>
+        <a href="https://github.com/isabella-fc/to-grant-or-not-to-grant" target="_blank" class="footer-link">
+            <i class="fa-brands fa-github"></i> View GitHub Repository
+        </a>
+    </div>
+</footer>
 {% endblock %}
