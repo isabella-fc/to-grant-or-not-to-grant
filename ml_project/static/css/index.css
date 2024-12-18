@@ -3,7 +3,7 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: #fcfcfc;
     margin: 0;
-    padding-top: 80px;
+    padding-top: 100px;
 }
 
 /* Navbar Styling */
@@ -104,8 +104,9 @@ body {
 }
 
 .homepage-left h1 {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     color: #2c3e50;
+    margin-bottom: 20px;
 }
 
 .homepage-left h2 {
